@@ -22,6 +22,14 @@ bool pertenece_set(set<int> s, int n){
     return res;
 }
 
+bool pertenece_char(vector<char> s, int n){
+    bool res= false;
+    for (char i : s) {
+        if (i == n){return true;}
+    }
+    return res;
+}
+
 vector<int> quitar_repetidos(vector<int> s) {
     vector<int> final;
     for (int & i : s) {
@@ -120,16 +128,60 @@ map<int, set<int>> agrupar_por_unidades(vector<int> s) {
 
 
 // Ejercicio 9
+char letra_asociada(vector<pair<char,char>> tr, char c){
+    for (int i = 0; i < tr.size(); ++i) {
+        if (tr[i].first==c){return tr[i].second;}
+    }
+}
+
 vector<char> traducir(vector<pair<char, char>> tr, vector<char> str) {
-    return vector<char>();
+    vector<char> final;
+    vector<char> traducibles;
+    for(auto & i : tr){
+        traducibles.push_back(i.first);
+    }
+    for(char c : str){
+        if (pertenece_char(traducibles,c)){final.push_back(letra_asociada(tr,c));}
+        else {final.push_back(c);}
+
+    }
+    return vector<char>(final);
+}
+
+bool hayInterseccionLU(set<LU> a, set<LU> b) {
+    bool res = false;
+    for (LU x : a) {
+        if (b.count(x) == 1) {
+            return true;
+        }
+    }
+    return res;
 }
 
 // Ejercicio 10
 bool integrantes_repetidos(vector<Mail> s) {
-    return true;
+    bool res = false;
+    for (int i = 0; i < s.size(); ++i) {
+        for (int j = 0; j < s.size(); ++j) {
+            if (hayInterseccionLU(s[i].libretas(),s[j].libretas()) && s[i].libretas()!=s[j].libretas()){
+                return true;
+            }
+        }
+    }
+    return res;
 }
 
 // Ejercicio 11
 map<set<LU>, Mail> entregas_finales(vector<Mail> s) {
-  return map<set<LU>, Mail>();
+    map<set<LU>, Mail> mp;
+    for (int i = 0; i < s.size(); ++i) {
+        for (int j = 0; j < s.size(); ++j) {
+                if (s[i].libretas()==s[j].libretas() &&
+                    (s[i].adjunto() && s[j].adjunto()) &&
+                    s[j].fecha() <= s[i].fecha()){
+                    mp[s[i].libretas()] = s[j];
+                }
+            }
+        }
+    return map<set<LU>, Mail>(mp);
 }

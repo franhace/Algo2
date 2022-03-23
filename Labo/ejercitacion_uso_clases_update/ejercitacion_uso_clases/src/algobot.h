@@ -8,7 +8,8 @@ using namespace std;
 
 class LU {
 public:
-  int numero() const;
+
+    int numero() const;
   int anio() const;
   bool operator==(const LU& o) const;
   bool operator<(const LU& o) const;
@@ -21,7 +22,7 @@ private:
   int _a;
 };
 
-class Mail {
+class   Mail {
 public:
   std::string asunto() const;
   Fecha fecha() const;

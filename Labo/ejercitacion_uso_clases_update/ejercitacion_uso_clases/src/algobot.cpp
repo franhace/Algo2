@@ -24,6 +24,7 @@ bool LU::operator<(const LU &o) const {
   return anio() < o.anio() or (anio() == o.anio() and numero() < o.numero());
 }
 
+
 Mail::Mail(string asunto, Fecha fecha, bool adjunto)
     : _asunto(asunto), _fecha(fecha), _adjunto(adjunto){};
 
