@@ -14,6 +14,14 @@ bool pertenece(vector<int> s, int n){
     return res;
 }
 
+bool pertenece_set(set<int> s, int n){
+    bool res= false;
+    for (int i : s) {
+        if (i == n){return true;}
+    }
+    return res;
+}
+
 vector<int> quitar_repetidos(vector<int> s) {
     vector<int> final;
     for (int & i : s) {
@@ -85,18 +93,31 @@ map<int, int> contar_apariciones(vector<int> s) {
 
 // Ejercicio 6
 vector<int> filtrar_repetidos(vector<int> s) {
-    return vector<int>();
+    vector<int> a;
+    for(int & i : s){
+        if (cantidad_apariciones(s,i)<2) { a.push_back(i); }
+    }
+    return vector<int>(a);
 }
 
 // Ejercicio 7
 set<int> interseccion(set<int> a, set<int> b) {
-    return set<int>();
+    set<int> c;
+    for(int x : a){
+        if (b.count(x)==1){c.insert(x);}
+    }
+    return set<int>(c);
 }
 
 // Ejercicio 8
 map<int, set<int>> agrupar_por_unidades(vector<int> s) {
-    return map<int, set<int>>();
+    map<int, set<int>> res = map<int, set<int>>(); // TODO: preguntar: al ser un set ya al insertar lo va a hacer 1 sola vez??
+    for (int i = 0; i < s.size(); i++) {
+        res[(s[i] % 10)].insert(s[i]);
+    }
+    return res;
 }
+
 
 // Ejercicio 9
 vector<char> traducir(vector<pair<char, char>> tr, vector<char> str) {

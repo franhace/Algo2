@@ -102,7 +102,7 @@ TEST(Ej, 08) {
                                               {3, set<int>{3}}});
   EXPECT_EQ(r4, e4);
 
-  map<int, set<int>> r5 = agrupar_por_unidades(vector<int>({1, 2, 3, 12, 20, 1101}));
+  map<int, set<int>> r5 = agrupar_por_unidades(vector<int>({1, 2, 3, 12,12, 20, 1101}));
   map<int, set<int>> e5 = map<int, set<int>>({{1, set<int>{1, 1101}}, {2, set<int>{2, 12}}, {0, set<int>{20}},
                                               {3, set<int>{3}}});
   EXPECT_EQ(r5, e5);
