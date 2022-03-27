@@ -146,6 +146,53 @@ ostream& operator << (ostream& os, Recordatorio r){
 }
 
 // Ejercicio 14
-
+#include "list"
 // Clase Agenda
+class Agenda {
+public:
+    Agenda(Fecha fecha_inicial);
+    void agregar_recordatorio(Recordatorio rec);
+    void incrementar_dia();
+    list<Recordatorio> recordatorios_de_hoy();
+    Fecha hoy();
 
+private:
+    Fecha dia_actual_;
+    list<Recordatorio> r_;
+};
+
+Agenda::Agenda(Fecha fecha_inicial) : dia_actual_(5,10){}
+
+void Agenda::agregar_recordatorio(Recordatorio rec) {
+    r_.push_back(rec);
+}
+
+void Agenda::incrementar_dia() {
+    dia_actual_.incrementar_dia();
+}
+
+list <Recordatorio> Agenda::recordatorios_de_hoy() {
+    list<Recordatorio> r_s;
+    for(auto i: r_){
+        if (dia_actual_ == i.fecha()){r_s.push_back(i);}
+    }
+    r_s.sort([](Recordatorio r1, Recordatorio r2)
+                               {
+                                   return (r1.horario() < r2.horario());
+                               }
+    );
+
+    return list<Recordatorio>(r_s);
+}
+
+Fecha Agenda::hoy() {
+    return dia_actual_;
+}
+
+ostream& operator << (ostream& os, Agenda a){
+    os << a.hoy() << endl;
+    os << "=====" << endl;
+    for (auto& i: a.recordatorios_de_hoy()) {
+        os << i ;
+    }
+}
