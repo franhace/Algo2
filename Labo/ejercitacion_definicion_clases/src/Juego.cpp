@@ -47,11 +47,17 @@ void Juego::mover_jugador(char dir) {
     else if (dir==DERECHA){a_donde_va = make_pair(0,1);}
     else{a_donde_va = make_pair(0,-1);}
     if ((posicion_jugador().first+a_donde_va.first>c_) || (posicion_jugador().first+a_donde_va.first<0)
-    || (posicion_jugador().second+a_donde_va.first>c_) || (posicion_jugador().first+a_donde_va.second<0))
-        {}
-
-}
-
+        || (posicion_jugador().second+a_donde_va.first>c_) || (posicion_jugador().first+a_donde_va.second<0))
+        {cout << "pos invalida" << endl;}
+    else
+    {
+        if ((p_.first += a_donde_va.first >= 0) || (p_.first += a_donde_va.first < c_))
+        {
+            if ((p_.first += a_donde_va.second >= 0) || (p_.first += a_donde_va.second < c_)) {
+                p_.first += a_donde_va.first;
+                p_.second += a_donde_va.second;
+            }}
+    }
 void Juego::ingerir_pocion(uint movimientos, uint turnos) {
 
 }
