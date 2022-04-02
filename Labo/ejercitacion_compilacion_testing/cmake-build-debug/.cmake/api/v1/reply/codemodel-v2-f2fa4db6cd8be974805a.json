@@ -1,0 +1,114 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "solucion",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ej1::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ej1-Debug-9865a18eba47040bc112.json",
+					"name" : "ej1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ej2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ej2-Debug-a8ff2e11d51a40d6ab4a.json",
+					"name" : "ej2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ej3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ej3-Debug-d20519b7153c40d736d3.json",
+					"name" : "ej3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ej_testing::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ej_testing-Debug-d5b1aea13ed26d022e5a.json",
+					"name" : "ej_testing",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gtest::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gtest-Debug-47cfb6afd5541b240c10.json",
+					"name" : "gtest",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gtest_main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gtest_main-Debug-8e9c7d48500d5003eeb0.json",
+					"name" : "gtest_main",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "solucion_testing::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-solucion_testing-Debug-66fc16cc7d94916bfc78.json",
+					"name" : "solucion_testing",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/cmake-build-debug",
+		"source" : "/home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
