@@ -1,7 +1,7 @@
 #include "gtest-1.8.1/gtest.h"
 
 #include "../src/Fecha.cpp"
-#include "../src/Periodo.h"
+//#include "../src/Periodo.h"
 
 TEST(fecha, periodo) {
   Periodo p(1, 2, 3);

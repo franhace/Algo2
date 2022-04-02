@@ -14,7 +14,7 @@ add_executable(ej1 tests/ej1_periodo.cpp src/Periodo.cpp)
 add_executable(ej2 tests/ej2_periodo_y_fecha.cpp
                src/Periodo.cpp)
 add_executable(ej3 tests/ej3_funciones.cpp
-               src/Funciones.cpp src/Periodo.cpp src/Fecha.cpp)
+               src/Funciones.cpp src/Periodo.cpp src/Fecha.cpp src/Meses.h src/Funciones.h)
 add_executable(solucion_testing tests/solucion_testing.cpp src/Truco.cpp
     src/Libreta.cpp)
 add_executable(ej_testing tests/ej_testing.cpp src/Truco.cpp

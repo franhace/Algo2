@@ -65,24 +65,18 @@ build CMakeFiles/ej_testing.dir/tests/ej_testing.cpp.o: CXX_COMPILER__ej_testing
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej_testing.dir
   OBJECT_FILE_DIR = CMakeFiles/ej_testing.dir/tests
-  TARGET_COMPILE_PDB = CMakeFiles/ej_testing.dir/
-  TARGET_PDB = ej_testing.pdb
 
 build CMakeFiles/ej_testing.dir/src/Truco.cpp.o: CXX_COMPILER__ej_testing_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Truco.cpp || cmake_object_order_depends_target_ej_testing
   DEP_FILE = CMakeFiles/ej_testing.dir/src/Truco.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej_testing.dir
   OBJECT_FILE_DIR = CMakeFiles/ej_testing.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej_testing.dir/
-  TARGET_PDB = ej_testing.pdb
 
 build CMakeFiles/ej_testing.dir/src/Libreta.cpp.o: CXX_COMPILER__ej_testing_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Libreta.cpp || cmake_object_order_depends_target_ej_testing
   DEP_FILE = CMakeFiles/ej_testing.dir/src/Libreta.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej_testing.dir
   OBJECT_FILE_DIR = CMakeFiles/ej_testing.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej_testing.dir/
-  TARGET_PDB = ej_testing.pdb
 
 
 # =============================================================================
@@ -98,9 +92,8 @@ build ej_testing: CXX_EXECUTABLE_LINKER__ej_testing_Debug CMakeFiles/ej_testing.
   OBJECT_DIR = CMakeFiles/ej_testing.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ej_testing.dir/
   TARGET_FILE = ej_testing
-  TARGET_PDB = ej_testing.pdb
+  TARGET_PDB = ej_testing.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target solucion_testing
@@ -116,24 +109,18 @@ build CMakeFiles/solucion_testing.dir/tests/solucion_testing.cpp.o: CXX_COMPILER
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/solucion_testing.dir
   OBJECT_FILE_DIR = CMakeFiles/solucion_testing.dir/tests
-  TARGET_COMPILE_PDB = CMakeFiles/solucion_testing.dir/
-  TARGET_PDB = solucion_testing.pdb
 
 build CMakeFiles/solucion_testing.dir/src/Truco.cpp.o: CXX_COMPILER__solucion_testing_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Truco.cpp || cmake_object_order_depends_target_solucion_testing
   DEP_FILE = CMakeFiles/solucion_testing.dir/src/Truco.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/solucion_testing.dir
   OBJECT_FILE_DIR = CMakeFiles/solucion_testing.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/solucion_testing.dir/
-  TARGET_PDB = solucion_testing.pdb
 
 build CMakeFiles/solucion_testing.dir/src/Libreta.cpp.o: CXX_COMPILER__solucion_testing_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Libreta.cpp || cmake_object_order_depends_target_solucion_testing
   DEP_FILE = CMakeFiles/solucion_testing.dir/src/Libreta.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/solucion_testing.dir
   OBJECT_FILE_DIR = CMakeFiles/solucion_testing.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/solucion_testing.dir/
-  TARGET_PDB = solucion_testing.pdb
 
 
 # =============================================================================
@@ -149,9 +136,8 @@ build solucion_testing: CXX_EXECUTABLE_LINKER__solucion_testing_Debug CMakeFiles
   OBJECT_DIR = CMakeFiles/solucion_testing.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/solucion_testing.dir/
   TARGET_FILE = solucion_testing
-  TARGET_PDB = solucion_testing.pdb
+  TARGET_PDB = solucion_testing.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ej3
@@ -167,32 +153,24 @@ build CMakeFiles/ej3.dir/tests/ej3_funciones.cpp.o: CXX_COMPILER__ej3_Debug /hom
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej3.dir
   OBJECT_FILE_DIR = CMakeFiles/ej3.dir/tests
-  TARGET_COMPILE_PDB = CMakeFiles/ej3.dir/
-  TARGET_PDB = ej3.pdb
 
 build CMakeFiles/ej3.dir/src/Funciones.cpp.o: CXX_COMPILER__ej3_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Funciones.cpp || cmake_object_order_depends_target_ej3
   DEP_FILE = CMakeFiles/ej3.dir/src/Funciones.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej3.dir
   OBJECT_FILE_DIR = CMakeFiles/ej3.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej3.dir/
-  TARGET_PDB = ej3.pdb
 
 build CMakeFiles/ej3.dir/src/Periodo.cpp.o: CXX_COMPILER__ej3_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Periodo.cpp || cmake_object_order_depends_target_ej3
   DEP_FILE = CMakeFiles/ej3.dir/src/Periodo.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej3.dir
   OBJECT_FILE_DIR = CMakeFiles/ej3.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej3.dir/
-  TARGET_PDB = ej3.pdb
 
 build CMakeFiles/ej3.dir/src/Fecha.cpp.o: CXX_COMPILER__ej3_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Fecha.cpp || cmake_object_order_depends_target_ej3
   DEP_FILE = CMakeFiles/ej3.dir/src/Fecha.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej3.dir
   OBJECT_FILE_DIR = CMakeFiles/ej3.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej3.dir/
-  TARGET_PDB = ej3.pdb
 
 
 # =============================================================================
@@ -208,9 +186,8 @@ build ej3: CXX_EXECUTABLE_LINKER__ej3_Debug CMakeFiles/ej3.dir/tests/ej3_funcion
   OBJECT_DIR = CMakeFiles/ej3.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ej3.dir/
   TARGET_FILE = ej3
-  TARGET_PDB = ej3.pdb
+  TARGET_PDB = ej3.dbg
 
 
 #############################################
@@ -238,8 +215,6 @@ build CMakeFiles/gtest.dir/tests/gtest-1.8.1/gtest-all.cc.o: CXX_COMPILER__gtest
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/gtest.dir
   OBJECT_FILE_DIR = CMakeFiles/gtest.dir/tests/gtest-1.8.1
-  TARGET_COMPILE_PDB = CMakeFiles/gtest.dir/gtest.pdb
-  TARGET_PDB = libgtest.pdb
 
 
 # =============================================================================
@@ -254,9 +229,8 @@ build libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug CMakeFiles/gtest.dir/te
   OBJECT_DIR = CMakeFiles/gtest.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/gtest.dir/gtest.pdb
   TARGET_FILE = libgtest.a
-  TARGET_PDB = libgtest.pdb
+  TARGET_PDB = gtest.a.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ej1
@@ -272,16 +246,12 @@ build CMakeFiles/ej1.dir/tests/ej1_periodo.cpp.o: CXX_COMPILER__ej1_Debug /home/
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej1.dir
   OBJECT_FILE_DIR = CMakeFiles/ej1.dir/tests
-  TARGET_COMPILE_PDB = CMakeFiles/ej1.dir/
-  TARGET_PDB = ej1.pdb
 
 build CMakeFiles/ej1.dir/src/Periodo.cpp.o: CXX_COMPILER__ej1_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Periodo.cpp || cmake_object_order_depends_target_ej1
   DEP_FILE = CMakeFiles/ej1.dir/src/Periodo.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej1.dir
   OBJECT_FILE_DIR = CMakeFiles/ej1.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej1.dir/
-  TARGET_PDB = ej1.pdb
 
 
 # =============================================================================
@@ -297,9 +267,8 @@ build ej1: CXX_EXECUTABLE_LINKER__ej1_Debug CMakeFiles/ej1.dir/tests/ej1_periodo
   OBJECT_DIR = CMakeFiles/ej1.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ej1.dir/
   TARGET_FILE = ej1
-  TARGET_PDB = ej1.pdb
+  TARGET_PDB = ej1.dbg
 
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target gtest_main
@@ -315,8 +284,6 @@ build CMakeFiles/gtest_main.dir/tests/gtest-1.8.1/gtest_main.cc.o: CXX_COMPILER_
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/gtest_main.dir
   OBJECT_FILE_DIR = CMakeFiles/gtest_main.dir/tests/gtest-1.8.1
-  TARGET_COMPILE_PDB = CMakeFiles/gtest_main.dir/gtest_main.pdb
-  TARGET_PDB = libgtest_main.pdb
 
 
 # =============================================================================
@@ -331,9 +298,8 @@ build libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug CMakeFiles/gt
   OBJECT_DIR = CMakeFiles/gtest_main.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/gtest_main.dir/gtest_main.pdb
   TARGET_FILE = libgtest_main.a
-  TARGET_PDB = libgtest_main.pdb
+  TARGET_PDB = gtest_main.a.dbg
 
 # =============================================================================
 # Object build statements for EXECUTABLE target ej2
@@ -349,16 +315,12 @@ build CMakeFiles/ej2.dir/tests/ej2_periodo_y_fecha.cpp.o: CXX_COMPILER__ej2_Debu
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej2.dir
   OBJECT_FILE_DIR = CMakeFiles/ej2.dir/tests
-  TARGET_COMPILE_PDB = CMakeFiles/ej2.dir/
-  TARGET_PDB = ej2.pdb
 
 build CMakeFiles/ej2.dir/src/Periodo.cpp.o: CXX_COMPILER__ej2_Debug /home/ff/Facu/Algo22/Labo/ejercitacion_compilacion_testing/src/Periodo.cpp || cmake_object_order_depends_target_ej2
   DEP_FILE = CMakeFiles/ej2.dir/src/Periodo.cpp.o.d
   FLAGS = -pthread -std=gnu++11 -ggdb3 -g -g -std=gnu++11
   OBJECT_DIR = CMakeFiles/ej2.dir
   OBJECT_FILE_DIR = CMakeFiles/ej2.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/ej2.dir/
-  TARGET_PDB = ej2.pdb
 
 
 # =============================================================================
@@ -374,9 +336,8 @@ build ej2: CXX_EXECUTABLE_LINKER__ej2_Debug CMakeFiles/ej2.dir/tests/ej2_periodo
   OBJECT_DIR = CMakeFiles/ej2.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/ej2.dir/
   TARGET_FILE = ej2
-  TARGET_PDB = ej2.pdb
+  TARGET_PDB = ej2.dbg
 
 # =============================================================================
 # Target aliases.
@@ -402,14 +363,14 @@ build all: phony ej_testing solucion_testing ej3 libgtest.a ej1 libgtest_main.a 
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCCompiler.cmake.in /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCCompilerABI.c /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXCompiler.cmake.in /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCompilerIdDetection.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCXXCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompileFeatures.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompilerABI.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompilerId.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineSystem.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeFindBinUtils.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeParseImplicitIncludeInfo.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeParseImplicitLinkInfo.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeParseLibraryArchitecture.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystem.cmake.in /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeTestCCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeTestCXXCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeTestCompilerCommon.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ADSP-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ARMCC-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ARMClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/AppleClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Borland-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Cray-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GHS-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-FindBinUtils.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/HP-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IAR-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Intel-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/MSVC-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/NVHPC-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/PGI-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/PathScale-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ROCMClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SCO-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/TI-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Watcom-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XL-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/zOS-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Internal/FeatureTesting.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-Determine-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCCompiler.cmake.in /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCCompilerABI.c /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXCompiler.cmake.in /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXCompilerABI.cpp /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCompilerIdDetection.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCXXCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompileFeatures.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompilerABI.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineCompilerId.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeDetermineSystem.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeFindBinUtils.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeParseImplicitIncludeInfo.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeParseImplicitLinkInfo.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeParseLibraryArchitecture.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystem.cmake.in /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeTestCCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeTestCXXCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeTestCompilerCommon.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ADSP-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ARMCC-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ARMClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/AppleClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Borland-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Cray-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GHS-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-FindBinUtils.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/HP-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IAR-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Intel-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/MSVC-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/NVHPC-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/PGI-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/PathScale-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/ROCMClang-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SCO-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/TI-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Watcom-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XL-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/zOS-C-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Internal/FeatureTesting.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-Determine-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
+build ../CMakeLists.txt /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
 
 
 #############################################
