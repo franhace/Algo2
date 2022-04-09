@@ -13,9 +13,10 @@ set(SOURCE_FILES src/Internet.cpp src/ConexionJugador.cpp)
 message("Test:" ${SOURCE_FILES})
 
 # Ejercicios
+add_executable(testing src/main.cpp ${SOURCE_FILES})
 add_executable(ej1 tests/sdm_tests.cpp src/SistemaDeMensajes.cpp ${SOURCE_FILES})
 add_executable(ej3 tests/sdm_tests.cpp src/SistemaDeMensajes.cpp ${SOURCE_FILES})
-add_executable(ej4 tests/sdm_tests.cpp src/SistemaDeMensajes.cpp src/Proxy.cpp ${SOURCE_FILES})
+add_executable(ej4 tests/sdm_tests.cpp src/SistemaDeMensajes.cpp src/Proxy.cpp ${SOURCE_FILES} )
 add_executable(ej6 tests/sdm_tests.cpp src/SistemaDeMensajes.cpp src/Proxy2.cpp ${SOURCE_FILES})
 add_executable(ej7 tests/sdm_tests_bonus.cpp src/SistemaDeMensajes.cpp ${SOURCE_FILES})
 
