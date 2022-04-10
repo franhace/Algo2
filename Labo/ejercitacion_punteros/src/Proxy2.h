@@ -9,6 +9,8 @@ using namespace std;
 class Proxy {
 public:
     Proxy(ConexionJugador** conn);
+
+
     void enviarMensaje(string msg);
 
 private:
