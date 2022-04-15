@@ -114,4 +114,19 @@ int& Lista::iesimo(Nat i) {
 
 void Lista::mostrar(ostream& o) {
     // Completar
+//    cout << o << endl;
+//    int r = 0;
+//    vector<int> valores = {};
+//    Nodo* actual = _head;
+//    while (r<_length-1){
+//        actual = actual->next;
+//        int valor = actual->value;
+//        valores.push_back(valor);
+//        r++;
+//    }
+//    cout << "[";
+//    for (int i = 0; i < valores.size(); ++i) {
+//        cout << i;
+//    }
+//    cout << "]" << endl;
 }

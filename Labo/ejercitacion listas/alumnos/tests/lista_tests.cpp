@@ -15,6 +15,7 @@ TEST(lista_test, test_constructor_vacio) {
 TEST(lista_test, test_agregar_un_elemento_adelante) {
     Lista l;
     l.agregarAdelante(42);
+//    l.mostrar();
     ASSERT_EQ(l.longitud(), 1);
     ASSERT_EQ(l.iesimo(0), 42);
 }
