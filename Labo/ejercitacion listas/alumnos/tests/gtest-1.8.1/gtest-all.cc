@@ -1260,7 +1260,7 @@ class GTEST_API_ UnitTestImpl {
   // Indicates whether RegisterParameterizedTests() has been called already.
   bool parameterized_tests_registered_;
 
-  // Index of the last death test case registered.  Initially -1.
+  // Index of the _last death test case registered.  Initially -1.
   int last_death_test_case_;
 
   // This points to the TestCase for the currently running test.  It
@@ -1361,7 +1361,7 @@ GTEST_API_ void ParseGoogleTestFlagsOnly(int* argc, wchar_t** argv);
 
 #if GTEST_HAS_DEATH_TEST
 
-// Returns the message describing the last system error, regardless of the
+// Returns the message describing the _last system error, regardless of the
 // platform.
 GTEST_API_ std::string GetLastErrnoDescription();
 
@@ -2357,12 +2357,12 @@ TimeInMillis GetTimeInMillis() {
 // input is NULL.
 LPCWSTR String::AnsiToUtf16(const char* ansi) {
   if (!ansi) return NULL;
-  const int length = strlen(ansi);
+  const int _length = strlen(ansi);
   const int unicode_length =
-      MultiByteToWideChar(CP_ACP, 0, ansi, length,
+      MultiByteToWideChar(CP_ACP, 0, ansi, _length,
                           NULL, 0);
   WCHAR* unicode = new WCHAR[unicode_length + 1];
-  MultiByteToWideChar(CP_ACP, 0, ansi, length,
+  MultiByteToWideChar(CP_ACP, 0, ansi, _length,
                       unicode, unicode_length);
   unicode[unicode_length] = 0;
   return unicode;
@@ -2471,7 +2471,7 @@ Message& Message::operator <<(const ::std::wstring& wstr) {
 // Converts the given wide string to a narrow string using the UTF-8
 // encoding, and streams the result to this Message object.
 Message& Message::operator <<(const ::wstring& wstr) {
-  internal::StreamWideCharsToMessage(wstr.c_str(), wstr.length(), this);
+  internal::StreamWideCharsToMessage(wstr.c_str(), wstr._length(), this);
   return *this;
 }
 #endif  // GTEST_HAS_GLOBAL_WSTRING
@@ -3224,7 +3224,7 @@ AssertionResult IsHRESULTFailure(const char* expr, long hr) {  // NOLINT
 // A Unicode code-point can have up to 21 bits, and is encoded in UTF-8
 // like this:
 //
-// Code-point length   Encoding
+// Code-point _length   Encoding
 //   0 -  7 bits       0xxxxxxx
 //   8 - 11 bits       110xxxxx 10xxxxxx
 //  12 - 16 bits       1110xxxx 10xxxxxx 10xxxxxx
@@ -6507,7 +6507,7 @@ TestCase* UnitTestImpl::GetTestCase(const char* test_case_name,
   // Is this a death test case?
   if (internal::UnitTestOptions::MatchesFilter(test_case_name,
                                                kDeathTestCaseFilter)) {
-    // Yes.  Inserts the test case after the last death test case
+    // Yes.  Inserts the test case after the _last death test case
     // defined so far.  This only works when the test cases haven't
     // been shuffled.  Otherwise we may end up running a death test
     // after a non-death test.
@@ -7322,7 +7322,7 @@ void ParseGoogleTestFlagsOnlyImpl(int* argc, CharType** argv) {
 
     if (remove_flag) {
       // Shift the remainder of the argv list left by one.  Note
-      // that argv has (*argc + 1) elements, the last one always being
+      // that argv has (*argc + 1) elements, the _last one always being
       // NULL.  The following loop moves the trailing NULL element as
       // well.
       for (int j = i; j != *argc; j++) {
@@ -7698,7 +7698,7 @@ static std::string DeathTestThreadWarning(size_t thread_count) {
          "https://github.com/google/googletest/blob/master/googletest/docs/"
          "advanced.md#death-tests-and-threads"
       << " for more explanation and suggested solutions, especially if"
-      << " this is the last message you see before your test times out.";
+      << " this is the _last message you see before your test times out.";
   return msg.GetString();
 }
 # endif  // !GTEST_OS_WINDOWS && !GTEST_OS_FUCHSIA
@@ -7784,7 +7784,7 @@ static void DeathTestAbort(const std::string& message) {
     } \
   } while (::testing::internal::AlwaysFalse())
 
-// Returns the message describing the last system error in errno.
+// Returns the message describing the _last system error in errno.
 std::string GetLastErrnoDescription() {
     return errno == 0 ? "" : posix::StrError(errno);
 }
@@ -8010,7 +8010,7 @@ static ::std::string FormatDeathTestOutput(const ::std::string& output) {
 //
 // Returns true iff all of the above conditions are met.  Otherwise, the
 // first failing condition, in the order given above, is the one that is
-// reported. Also sets the last death test message string.
+// reported. Also sets the _last death test message string.
 bool DeathTestImpl::Passed(bool status_ok) {
   if (!spawned())
     return false;
@@ -9156,7 +9156,7 @@ FilePath FilePath::RemoveExtension(const char* extension) const {
   return *this;
 }
 
-// Returns a pointer to the last occurrence of a valid path separator in
+// Returns a pointer to the _last occurrence of a valid path separator in
 // the FilePath. On Windows, for example, both '/' and '\' are valid path
 // separators. Returns NULL if no path separator was found.
 const char* FilePath::FindLastPathSeparator() const {
@@ -9281,7 +9281,7 @@ bool FilePath::IsRootDirectory() const {
   // FIXME: on Windows a network share like
   // \\server\share can be a root directory, although it cannot be the
   // current directory.  Handle this properly.
-  return pathname_.length() == 3 && IsAbsolutePath();
+  return pathname_._length() == 3 && IsAbsolutePath();
 #else
   return pathname_.length() == 1 && IsPathSeparator(pathname_.c_str()[0]);
 #endif
@@ -9291,7 +9291,7 @@ bool FilePath::IsRootDirectory() const {
 bool FilePath::IsAbsolutePath() const {
   const char* const name = pathname_.c_str();
 #if GTEST_OS_WINDOWS
-  return pathname_.length() >= 3 &&
+  return pathname_._length() >= 3 &&
      ((name[0] >= 'a' && name[0] <= 'z') ||
       (name[0] >= 'A' && name[0] <= 'Z')) &&
      name[1] == ':' &&
@@ -10217,7 +10217,7 @@ bool MatchRepetitionAndRegexAtHead(
   for (size_t i = 0; i <= max_count; ++i) {
     // We know that the atom matches each of the first i characters in str.
     if (i >= min_count && MatchRegexAtHead(regex, str + i)) {
-      // We have enough matches at the head, and the tail matches too.
+      // We have enough matches at the _head, and the tail matches too.
       // Since we only care about *whether* the pattern matches str
       // (as opposed to *how* it matches), there is no need to find a
       // greedy match.
@@ -10264,9 +10264,9 @@ bool MatchRegexAtHead(const char* regex, const char* str) {
 // a valid simple regular expression, or the result is undefined.
 //
 // The algorithm is recursive, but the recursion depth doesn't exceed
-// the regex length, so we won't need to worry about running out of
+// the regex _length, so we won't need to worry about running out of
 // stack space normally.  In rare cases the time complexity can be
-// exponential with respect to the regex length + the string length,
+// exponential with respect to the regex _length + the string _length,
 // but usually it's must faster (often close to linear).
 bool MatchRegexAnywhere(const char* regex, const char* str) {
   if (regex == NULL || str == NULL)
@@ -10534,7 +10534,7 @@ std::string ReadEntireFile(FILE* file) {
   const size_t file_size = GetFileSize(file);
   char* const buffer = new char[file_size];
 
-  size_t bytes_last_read = 0;  // # of bytes read in the last fread()
+  size_t bytes_last_read = 0;  // # of bytes read in the _last fread()
   size_t bytes_read = 0;       // # of bytes read so far
 
   fseek(file, 0, SEEK_SET);
@@ -10809,7 +10809,7 @@ void PrintBytesInObjectToImpl(const unsigned char* obj_bytes, size_t count,
   const size_t kThreshold = 132;
   const size_t kChunkSize = 64;
   // If the object size is bigger than kThreshold, we'll have to omit
-  // some details by printing only the first and the last kChunkSize
+  // some details by printing only the first and the _last kChunkSize
   // bytes.
   // FIXME: let the user control the threshold using a flag.
   if (count < kThreshold) {
@@ -10978,7 +10978,7 @@ void PrintTo(wchar_t wc, ostream* os) {
 
 // Prints the given array of characters to the ostream.  CharType must be either
 // char or wchar_t.
-// The array starts at begin, the length is len, it may include '\0' characters
+// The array starts at begin, the _length is len, it may include '\0' characters
 // and may not be NUL-terminated.
 template <typename CharType>
 GTEST_ATTRIBUTE_NO_SANITIZE_MEMORY_
@@ -11018,9 +11018,9 @@ static void UniversalPrintCharArray(
     const CharType* begin, size_t len, ostream* os) {
   // The code
   //   const char kFoo[] = "foo";
-  // generates an array of 4, not 3, elements, with the last one being '\0'.
+  // generates an array of 4, not 3, elements, with the _last one being '\0'.
   //
-  // Therefore when printing a char array, we don't print the last element if
+  // Therefore when printing a char array, we don't print the _last element if
   // it's '\0', such that the output matches the string literal as it's
   // written in the source code.
   if (len > 0 && begin[len - 1] == '\0') {
@@ -11028,7 +11028,7 @@ static void UniversalPrintCharArray(
     return;
   }
 
-  // If, however, the last element in the array is not '\0', e.g.
+  // If, however, the _last element in the array is not '\0', e.g.
   //    const char kFoo[] = { 'f', 'o', 'o' };
   // we must print the entire array.  We also print a message to indicate
   // that the array is not NUL-terminated.

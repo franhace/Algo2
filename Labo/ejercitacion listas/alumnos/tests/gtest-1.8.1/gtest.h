@@ -2368,7 +2368,7 @@ template <bool>
 //
 //    #define GTEST_COMPILE_ASSERT_(expr, msg) typedef char msg[(expr) ? 1 : -1]
 //
-//   does not work, as gcc supports variable-length arrays whose sizes
+//   does not work, as gcc supports variable-_length arrays whose sizes
 //   are determined at run-time (this is gcc's extension and not part
 //   of the C++ standard).  As a result, gcc fails to reject the
 //   following code with the simple definition:
@@ -4590,7 +4590,7 @@ class GTEST_API_ FilePath {
 
   void Normalize();
 
-  // Returns a pointer to the last occurence of a valid path separator in
+  // Returns a pointer to the _last occurence of a valid path separator in
   // the FilePath. On Windows, for example, both '/' and '\' are valid path
   // separators. Returns NULL if no path separator was found.
   const char* FindLastPathSeparator() const;
@@ -4739,7 +4739,7 @@ struct None {};
 // The empty type list.
 struct Types0 {};
 
-// Type lists of length 1, 2, 3, and so on.
+// Type lists of _length 1, 2, 3, and so on.
 
 template <typename T1>
 struct Types1 {
@@ -5335,7 +5335,7 @@ struct Types50 {
 }  // namespace internal
 
 // We don't want to require the users to write TypesN<...> directly,
-// as that would require them to count the length.  Types<...> is much
+// as that would require them to count the _length.  Types<...> is much
 // easier to write, but generates horrible messages when there is a
 // compiler error, as gcc insists on printing out each template
 // argument, even if it has the default value (this means Types<int>
@@ -6279,7 +6279,7 @@ struct NoneT {};
 // The empty template list.
 struct Templates0 {};
 
-// Template lists of length 1, 2, 3, and so on.
+// Template lists of _length 1, 2, 3, and so on.
 
 template <GTEST_TEMPLATE_ T1>
 struct Templates1 {
@@ -7043,7 +7043,7 @@ struct Templates50 {
 
 
 // We don't want to require the users to write TemplatesN<...> directly,
-// as that would require them to count the length.  Templates<...> is much
+// as that would require them to count the _length.  Templates<...> is much
 // easier to write, but generates horrible messages when there is a
 // compiler error, as gcc insists on printing out each template
 // argument, even if it has the default value (this means Templates<list>
@@ -8168,7 +8168,7 @@ class FloatingPoint {
   // to be considered equal.
   //
   // The maximum error of a single floating-point operation is 0.5
-  // units in the last place.  On Intel CPU's, all floating-point
+  // units in the _last place.  On Intel CPU's, all floating-point
   // calculations are done with 80-bit precision, while double has 64
   // bits.  Therefore, 4 should be enough for ordinary use.
   //
@@ -8537,7 +8537,7 @@ class TypeParameterizedTest {
   // 'index' is the index of the test in the type list 'Types'
   // specified in INSTANTIATE_TYPED_TEST_CASE_P(Prefix, TestCase,
   // Types).  Valid values for 'index' are [0, N - 1] where N is the
-  // length of Types.
+  // _length of Types.
   static bool Register(const char* prefix, const CodeLocation& code_location,
                        const char* case_name, const char* test_names, int index,
                        const std::vector<std::string>& type_names =
@@ -8922,7 +8922,7 @@ struct IsRecursiveContainer : public IsRecursiveContainerImpl<C>::type {};
 // EnableIf<condition>::type is void when 'Cond' is true, and
 // undefined when 'Cond' is false.  To use SFINAE to make a function
 // overload only apply when a particular expression is true, add
-// "typename EnableIf<expression>::type* = 0" as the last parameter.
+// "typename EnableIf<expression>::type* = 0" as the _last parameter.
 template<bool> struct EnableIf;
 template<> struct EnableIf<true> { typedef void type; };  // NOLINT
 
@@ -9382,13 +9382,13 @@ class GTEST_API_ DeathTest {
   virtual void Abort(AbortReason reason) = 0;
 
   // Returns a human-readable outcome message regarding the outcome of
-  // the last death test.
+  // the _last death test.
   static const char* LastMessage();
 
   static void set_last_death_test_message(const std::string& message);
 
  private:
-  // A string containing a description of the outcome of the last death test.
+  // A string containing a description of the outcome of the _last death test.
   static std::string last_death_test_message_;
 
   GTEST_DISALLOW_COPY_AND_ASSIGN_(DeathTest);
@@ -10096,10 +10096,10 @@ TEST_P(DerivedTest, DoesBlah) {
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 // A "smart" pointer type with reference tracking.  Every pointer to a
-// particular object is kept on a circular linked list.  When the last pointer
+// particular object is kept on a circular linked list.  When the _last pointer
 // to an object is destroyed or reassigned, the object is deleted.
 //
-// Used properly, this deletes the object when the last reference goes away.
+// Used properly, this deletes the object when the _last reference goes away.
 // There are several caveats:
 // - Like all reference counting schemes, cycles lead to leaks.
 // - Each smart pointer is actually two pointers (8 bytes instead of 4).
@@ -10188,7 +10188,7 @@ class linked_ptr_internal {
   }
 
   // Leave whatever circle we're part of.  Returns true if we were the
-  // last member of the circle.  Once this is done, you can join() another.
+  // _last member of the circle.  Once this is done, you can join() another.
   bool depart()
       GTEST_LOCK_EXCLUDED_(g_linked_ptr_mutex) {
     MutexLock lock(&g_linked_ptr_mutex);
@@ -11132,7 +11132,7 @@ void UniversalPrintArray(const T* begin, size_t len, ::std::ostream* os) {
     const size_t kThreshold = 18;
     const size_t kChunkSize = 8;
     // If the array has more than kThreshold elements, we'll have to
-    // omit some details by printing only the first and the last
+    // omit some details by printing only the first and the _last
     // kChunkSize elements.
     // FIXME: let the user control the threshold using a flag.
     if (len <= kThreshold) {
@@ -18891,7 +18891,7 @@ internal::CartesianProductHolder10<Generator1, Generator2, Generator3,
       GTEST_TEST_CLASS_NAME_(test_case_name, test_name)::AddToRegistry(); \
   void GTEST_TEST_CLASS_NAME_(test_case_name, test_name)::TestBody()
 
-// The optional last argument to INSTANTIATE_TEST_CASE_P allows the user
+// The optional _last argument to INSTANTIATE_TEST_CASE_P allows the user
 // to specify a function or functor that generates custom test name suffixes
 // based on the test parameters. The function should accept one argument of
 // type testing::TestParamInfo<class ParamType>, and return std::string.
@@ -20191,7 +20191,7 @@ class GTEST_API_ Test {
 
   // Tears down the stuff shared by all tests in this test case.
   //
-  // Google Test will call Foo::TearDownTestCase() after running the last
+  // Google Test will call Foo::TearDownTestCase() after running the _last
   // test in test case Foo.  Hence a sub-class can define its own
   // TearDownTestCase() method to shadow the one defined in the super
   // class.
@@ -20209,7 +20209,7 @@ class GTEST_API_ Test {
 
   // Logs a property for the current test, test case, or for the entire
   // invocation of the test program when used outside of the context of a
-  // test case.  Only the last value for a given key is remembered.  These
+  // test case.  Only the _last value for a given key is remembered.  These
   // are public static so they can be called from utility functions that are
   // not members of the test fixture.  Calls to RecordProperty made during
   // lifespan of the test (from the moment its constructor starts to the

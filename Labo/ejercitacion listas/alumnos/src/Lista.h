@@ -8,6 +8,7 @@ using namespace std;
 
 typedef unsigned long Nat;
 
+
 class Lista {
 public:
 
@@ -89,10 +90,17 @@ private:
 
     struct Nodo {
         // Completar
+        Nodo* prev;
+        Nodo* next;
+        int value;
     };
 
     // Completar
+    int _length;
+    Nodo* _head;
+    Nodo* _last;
 };
+
 
 #include "Lista.hpp"
 
