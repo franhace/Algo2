@@ -11,10 +11,27 @@ Lista::Lista(const Lista& l) : Lista() {
 
 Lista::~Lista() {
     // Completar
+    Nodo* actual = _head;
+    while (actual != nullptr){
+        Nodo* prev = actual;
+        actual = actual->next;
+        delete(prev);
+    }
 }
 
 Lista& Lista::operator=(const Lista& aCopiar) {
     // Completar
+    // atenti: esto vale para casos donde ya hice una copia (o=aCopiar)
+    // y donde todavia tengo en memoria los valores anteriores
+    // pero habiendo modificado la lista aCopiar y volviendo a hacer (o=aCopiar)
+    // tengo que "reinicializar" mi lista borrando sus elems y..
+    while (_length > 0){
+        this->eliminar(0);
+    }
+    // copio los elems de la lista aCopiar
+    for (int i = 0; i < aCopiar._length; ++i) {
+        this->agregarAtras(aCopiar.iesimo(i));
+    }
     return *this;
 }
 
