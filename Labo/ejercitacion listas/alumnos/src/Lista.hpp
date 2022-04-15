@@ -74,6 +74,7 @@ void Lista::agregarAtras(const int& elem) {
 void Lista::eliminar(Nat i) {
     // Completar
     // asumo que siempre vale: 0 <= i <= _length-1;
+    Nodo* actual = _head;
     if (_length==1){
         _head= nullptr;
         _last= nullptr;
@@ -85,11 +86,12 @@ void Lista::eliminar(Nat i) {
     }
     // si es el ult elem, el que fuera el anterior sera el ult oficial
     else if (i==_length-1){
+        actual = _last;
         _last->prev->next = nullptr;
         _last = _last->prev;
-    } else { // en su defecto, linkeamos el anterior con el sig y vice versa
+    }
+    else { // en su defecto, linkeamos el anterior con el sig y vice versa
         int r = 0;
-        Nodo* actual = _head;
         while (r<i){
             actual = actual->next;
             r++;
@@ -97,6 +99,8 @@ void Lista::eliminar(Nat i) {
         actual->prev->next = actual->next;
         actual->next->prev = actual->prev;
     }
+    // para evitar perdidas de memoria borramos el actual ( siempre es el que se borra )
+    delete(actual);
     _length--;
 }
 
