@@ -1,0 +1,139 @@
+-- TAD en 2 niveles:
+-- Parte 1: estatica
+
+TAD Acertijo ES Nat
+
+TAD Laberinto
+	Igualdad Observacional:();
+	Géneros: lab
+	Exporta: lab, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		acertijos: lab → conj(acertijo)
+		dificultad: lab l x acertijo a → nat {a ∈ acertijos(l)}
+		opciones: lab l x acertijo a → conj(acertijo) {a ∈ acertijos(l)}
+	Generadores:
+		laberinto: acertijo x nat → lab
+		agrAcertijo: lab l x acertijo a x nat x conj(acertijo) prev → lab {¬(a ∈ acertijos(l)) ∧
+																																prev ⊆ acertijos(l))}
+	Otras Operaciones:
+		acertijoIni: lab → acertijo
+		acerijosFin: lab → conj(acertijo)
+		filtrarAcertijosFinales: lab l x conj(acertijo) as → conj(acertijo) {as ⊆ acertijos(l)}
+	
+	Axiomas:
+	  -- ojo aca abajo, faltaban los corchetes del conjunto
+		acertijos(laberinto(a, dif)) ≡ {a}
+		acertijos(agrAcertijo(l, a, dif, prev)) ≡ Ag(a, acertijos(l))
+		-- ojo aca abajo, habia puesto laberinto(acertijo a, nat dif), faltaba a
+		dificultad(laberinto(a', dif), a) ≡ dif
+		dificultad(agrAcertijo(l, a, dif, prev), a) ≡
+																									if a=a' then
+																										dif
+																									else
+																										dificultad(l, a)
+																									fi
+		opciones(laberinto(a', dif), a) ≡ Ø
+		opciones(agrAcertijo(l, a', dif, prev), a) ≡ 
+																									if a=a' then
+																										Ø
+																									else opciones(l, a) ∪
+																										if a ∈ prev then
+																											{a'}
+																										else
+																											Ø
+																										fi
+																									fi
+																									
+	  -- como las otras operaciones son funcion de las basicas, no rompe la congruencia
+		-- axiomatizar sobre los gens
+		acertijoIni(laberinto(a, d)) ≡ a
+		acertijoIni(agrAcertijo(l, a, dif, prev)) ≡ acertijoIni(l)
+		acertijosFin(l) ≡ filtrarAcertijosFinales(l, acertijos(l))
+		filtrarAcertijosFinales(l, c) ≡
+			if vacío?(c) then
+				Ø
+			else -- c =obs Ag(dameUno(c), sinUno(c))
+				if Ø?(opciones(l, dameUno(c))) then
+					Ag(dameUno(c), filtrarAcertijosFinales(l, sinUno((c))))
+				else
+					filtrarAcertijosFinales(l, sinUno(c))
+				fi
+			fi
+Fin TAD
+
+-- Parte 2: dinamica
+
+TAD Jugador ES Nat 
+
+TAD Temporada
+	Igualdad Observacional:();
+	Géneros: temp
+	Exporta: temp, observadores, generadores, 
+	Usa: Bool, Nat, Laberinto
+	
+	Observadores Básicos:
+		jugadores: temp → conj(jugador)
+		actual: temp t x jugador j → acertijo {j ∈ jugadores(t)}
+		resueltos: temp t x jugador j → conj(acertijo) {j ∈ jugadores(t)}
+		laberinto: temp t → lab
+	Generadores:
+		-- hay un numero de fijo de jgs cuando se inicia la temporada
+		nuevaTemp: conj(jugador) x lab → temp {#(acerijosFin(l)) = 1}
+		resolver: temp t x jugador j x acertijo elec → temp {¬(finalizada(t) ∧ j ∈ jugadores(t) ∧L
+																												elec ∈ opciones(laberinto(t), actual(t, j))}
+		resolverFinal: temp t x jugador j → temp {¬(finalizada(t) ∧ j ∈ jugadores(t) ∧L
+																							Ø?(opciones(laberinto(t), actual(t,j)))}
+	Axiomas:
+	jugadores(nuevaTemp(js,l)) ≡ js
+	jugadores(resolver(t,j,elec)) ≡ jugadores(t)
+	jugadores(resolverFinal(t,j)) ≡ jugadores(t)
+	
+	actual(nuevaTemp(js,l), j) ≡ acertijoIni(l)
+	actual(resolver(t,j',elec), j) ≡ 
+		if j=j' then
+			elec
+		else
+			actual(t, j)
+		fi
+	actual(resolverFinal(t,j'), j) ≡ actual(t,j)
+	
+	resueltos(nuevaTemp(js,l), j) ≡ {Ø}
+	resueltos(resolver(t,j',elec), j) ≡ 
+		if j=j' then
+			Ag(elec, resueltos(t,j))
+		else
+			resueltos(t,j)
+		fi
+	resueltos(resolverFinal(t,j'), j) ≡ 
+		if j=j' then
+			Ag(actual(t, j), resueltos(t,j))
+		else
+			resueltos(t,j)
+		fi
+		-- lo mismo escrito de formas distintas
+		resueltos(t,j) ∪
+		if j=j' then
+			Actual(j')
+		else
+			{Ø}
+		fi
+		
+		laberinto(nuevaTemp(js,l)) ≡ l
+		laberinto(resolver(t,j,elec)) ≡ laberinto(t)
+		laberinto(resolverFinal(t,j)) ≡ laberinto(t)
+		
+		-- si temporada esta finalizada podemos desprenderlo de laberinto, 
+		-- es el que no tenga opciones, entonces no deberia romper la congruencia
+		
+		finalizada?(nuevaTemp(js,l)) ≡ false
+		--como esta eligiendo significa que no es el final
+		finalizada?(resolver(t,j,elec)) ≡ false
+		finalizada?(resolverFinal(t,j)) ≡ true	
+	
+	Otras Operaciones:
+		finalizada?: temp → bool
+		
+		
+Fin TAD

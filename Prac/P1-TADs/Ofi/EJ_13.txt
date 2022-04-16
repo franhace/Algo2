@@ -1,0 +1,70 @@
+Ejercicio 13
+
+TAD Colectivo
+	genero colectivo
+
+	igualdad observacional
+		(V c1,c2: colectivo)(c1 =obs c2) <-> (#butacas(c1) = #butacas(c2) ^
+											  #paradas(c1) = #paradas(c2) ^
+											  #pasajeros(c1) = #pasajeros(c2))
+
+	observadores
+		#butacas    : coelctivo -> nat
+		#paradas    : colectivo -> nat
+		#pasajeros  : colectivo -> nat
+
+	generadores
+		nuevo                  : nat b x nat p -> colectivo 	 { (b > 2 ^L b mod 2 = 0) ^ p > 0 }
+		subenPasajeros         : nat x colectivo -> colectivo
+		bajanPasajeros         : nat x colectivo -> colectivo
+		subenPerosnasReducidas : nat x colectivo -> colectivo
+
+	otras operaciones
+		pasajerosParados : colectivo -> nat
+		butcasLibres 	 : colectivo -> nat
+
+	axiomas
+		#butacas(nuevo(b,p)) 		  		  = b
+		#butacas(subenPasajeros(n,c)) 		  = #butacas(c)
+		#butacas(bajanPasajeros(n,c)) 		  = #butacas(c)
+		#butacas(subenPerosnasReducidas(n,c)) = #butacas(c)
+
+		#paradas(nuevo(b,p))		  		  = p
+		#paradas(subenPasajeros(n,c)) 		  = #paradas(c)
+		#paradas(bajanPasajeros(n,c)) 		  = #paradas(c)
+		#paradas(subenPerosnasReducidas(n,c)) = #paradas(c)
+
+		#pasajeros(nuevo(b,p)) 					= 0
+		#pasajeros(subenPasajeros(n,c)) 		= #pasajeros(c) + n
+		#pasajeros(bajanPasajeros(n,c)) 		= #pasajeros(c) - n
+		#pasajeros(subenPerosnasReducidas(n,c)) = #pasajeros(c) + n
+
+		pasajerosParados(nuevo(b,p)) 		  		  = 0
+		pasajerosParados(subenPasajeros(n,c)) 		  = if #pasajeros(c) + n - #butacas(c) > 0
+											     		 then #pasajeros(c) + n - #butacas(c)
+											     		 else 0
+											    		fi
+		pasajerosParados(bajanPasajeros(n,c)) 		  = if #pasajeros(c) - n - #butacas(c) > 0
+											     		 then #pasajeros(c) - n - #butacas(c)
+											     		 else 0
+											    		fi
+		pasajerosParados(subenPerosnasReducidas(n,c)) = if #pasajeros(c) - n - #butacas(c) > 0
+											     		 then #pasajeros(c) - n - #butacas(c)
+											     		 else 0
+											    		fi
+
+		butacasLibres(nuevo(b,p)) 		   		   = b
+		butacasLibres(subenPasajeros(n,c)) 		   = if #pasajeros(c) + n > #butacas(c)
+											  		  then 0
+											  		  else #butacas(c) - (#pasajeros(c) + n)
+											 		 fi
+		butacasLibres(bajanPasajeros(n,c)) 		   = if #pasajeros(c) - n > #butacas(c)
+											  		  then 0
+											  		  else #butacas(c) - (#pasajeros(c) - n)
+											 		 fi
+		butacasLibres(subenPerosnasReducidas(n,c)) = if #pasajeros(c) - n > #butacas(c)
+											  		  then 0
+											  		  else #butacas(c) - (#pasajeros(c) - n)
+											 		 fi
+
+Fin TAD

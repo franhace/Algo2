@@ -1,0 +1,64 @@
+TAD Catalogo
+	Igualdad Observacional:();
+	Géneros: catalogo
+	Exporta: catalogo, observadores, generadores, 
+	Usa: Bool, Nat
+	Observadores Básicos:
+		obs?:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+	Generadores:
+		nil:			-> nombreTad
+	Otras Operaciones:
+		otra:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+	Axiomas:
+		obs?(nil)	= 	true
+		otra(t, n)	= 	n
+		...
+Fin TAD
+
+TAD Cancion ES String
+TAD Genero ES String
+TAD ReproductorDEMUsica
+	Igualdad Observacional:();
+	Géneros: rm
+	Exporta: rm, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+	#reproducciones:	cancion c × rm → nat {def?(c, catalogo(rm))}
+	
+	-version1:
+	  estaEnCatalogo?: cancion × rm → bool 
+		generoDeCancion: cancion × rm → genero {cancion ∈ catalogo}
+		
+	-v2: usando 2 niveles
+	  catalogo: rm → dicc(cancion, genero)
+		
+	Generadores:
+		nuevo: dicc(cancion, genero) cat → rm -- no se pueden repetir las claves
+		# (agregarCancion: rm x cancion x genero → rm)
+		reproducir: rm r x cancion c → rm {def?(c, catalogo(rm))} 
+																			{c ∈ claves(catalogo(r))}
+	Otras Operaciones:
+		#reproduccionesGenero: genero × rm → nat
+	Axiomas:
+		catalogo(nuevo(cat)) ≡ cat
+		catalogo(reproducir(r, c)) ≡ catalogo(r) 
+		#reproducciones(c, nuevo(cat)) ≡ 0
+		#reproducciones(c, reproducir(r, c')) ≡
+		#reproducciones(r, c) + 
+			if c=c' then
+				 1
+			else
+				0
+			fi
+		β(c=c') -- son exactamente lo mismo esta y la anterior
+		
+		-- tratar de no axiomatizar otra operaciones sobre generadores!!!!
+		-- se podria romper la congruencia.
+		-- en este caso no se rompe porque nuestra otra operacion es funcion
+		de los observadores, entonces no se rompe la congruencia.
+		#reproduccionesGenero(g, nuevo(cat)) ≡ 0
+		#reproduccionesGenero(g, reproducir(r, c)) ≡ #reproduccionesGenero(g, r) +
+		β(g = obtener(c,catalogo(r)))
+		...
+Fin TAD

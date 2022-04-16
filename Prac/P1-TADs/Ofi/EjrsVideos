@@ -1,0 +1,75 @@
+eJ Bandas
+
+Inv de abs:
+
+Rep: estr -- bool
+Rep(e) equiv true sii 
+1. e.generos = claves(e.instrumentosPorGenero)
+2. (forAll g1,g2: genero)( g1 diff g2 yl {g1,g2} in e.generos implies obtener(e.instrumentosPorGenero, g1) diff obtener(e.intrumentosPorGenero,g2))
+3. e.bandas = claves(e.infoBanda)
+4. (forAll b : banda ) ( b in claves(e.infoBanda) y b in e.bandas 
+implies (exists g: genero) ( g in significado(e.intrumentosPorGenero) yLuego ( pi_1(significado(e.infoBanda, b)) = significado(e.instrumentosPorGenero)) )
+
+Corregido:
+4. (forAll b : banda ) ( b in e.bandas 
+impliesL (exists g: genero) ( g in significado(e.intrumentosPorGenero) yLuego ( 
+pi_0(significado(e.infoBanda, b)) in e.bandas y 
+pi_1(significado(e.infoBanda, b)) = 
+obtener(e.instrumentosPorGenero, pi_1(obtener(e.infoBanda, b))))
+
+Fx de abs:
+Abs: estr sobrerito e --- estr
+( forAll e : estr ) Abs(e) =obs d: estr | 
+
+e.generos = generos(d) yL
+(forAll g: genero, forAll i: Instrumento) ( g in e.generos y i in obtener(e.instrumentosPorGenero, g) implicaL instrumentosDelGen(d,g,i) = True yL
+e.bandas = bandas(d) yL
+(forAll b: Banda) ( b in e.bandas implicaL instrumentosPorBanda(d,b) = pi_1(obtener(e.infoBanda, b)))
+
+
+ej Tecnicos A Domicilio
+
+1. claves de ubicacion en tecnicos
+2. significados de ubicacion y quienes estanEN en clientes
+3. si hay pendientes es pq todos tecnicos ocupados
+4. claves de visitas en tecnicos
+5. si tecnico en una dir esa tiene que aparecer en visitas para el tecnico
+6. el conj de clientes de la estr debe tener todas las dirs visitas
+
+1. claves(e.ubicacion) incluido,igual e.tecnicos
+2. obtener(e.ubicacion) incluido,igual e.clientes U 
+3. 
+
+
+Correccion
+
+2. ( forAll t in claves(e.ubicacion) ) ( obtener(e.ubicacion, t)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

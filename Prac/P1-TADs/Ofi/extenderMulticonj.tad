@@ -1,0 +1,27 @@
+TAD Multiconjunto 
+
+otras operaciones
+    eliminarTodos : multiconj(α) × α → multiconj(α)
+    Nrepetidos : multiconj(α) × nat → conj
+    agregarRepetido : multiconj(α) × nat 
+axiomas 
+
+        
+    eliminarTodos(∅ , e ) ≡ ∅ 
+    eliminarTodos(c, e) ≡ if #(e, c) = 0 
+                            then c
+                            else eliminarTodos(c - {e}, e) 
+                          fi 
+    
+    eliminarTodos(Ag(e',c), e) ≡ if e' = e 
+                                    then eliminarTodos(m, e)
+                                    else Ag(e', eliminarTodos(m,e))
+                                 fi 
+    Nreptidos(c, n) ≡ if #(dameUno(c), c) < n)
+                        then eliminarTodos(c, dameUno(c)) 
+                                                --Nreptidos(sinUno(c), n)
+                        else Nrepetidos(eliminarTodos(c, dameUno(c))
+                      fi  
+
+
+Fin TAD

@@ -1,0 +1,118 @@
+TAD Vehiculo es String
+TAD Cabina es Nat
+TAD Precio es Nat
+TAD Limite es Nat
+TAD PDZ
+	Igualdad Observacional:(∀ p₀,p₁: peaje, ∀c,c': cabina, ∀ v: vehiculo
+			(p₀ =obs p₁ ↔
+				(precios(p₀) = precios(p₁) ∧ 
+				cabinas(p₀) = cabinas(p₁) ∧L		
+				((def?(c,cabinas(p₀)))⇒L(colaDeCabina(c,p₀) = colaDeCabina(c,p₁) ∧ 
+				 			facturado(c,p₀) = facturado(c, p₁) ∧ (def(v,precios(p₀)) ⇒L( #VehiculosPorCabina(c,v,p₀) = #VehiculosPorCabina(c,v,p₁))) ∧			
+				 )			
+				)
+				)
+		
+		
+		);
+	Géneros: peaje
+	Exporta: Paje, observadores, generadores, 
+	Usa: Precio, Limite, Vehiculo, Cabina, Bool, Nat
+	
+	Observadores Básicos:
+		precios:	peaje  -> dicc(vehiculo,precio)
+		cabinas: 	peaje  -> dicc(cabina,limite) 	
+		colaDeCabina: cabina c x peaje p -> cola(vehiculo) {def?(c,cabinas(p))}
+		facturado: cabina c x peaje p -> Nat {def?(c,cabinas(p))}
+		#VehiculosPorCabina: cabina c x vehiculo v x peaje p -> Nat {def?(c,cabinas(p)) ∧ def?(v,precios(p))} //Hace falta que este definido vehiculo?
+																																																					//->No hace falta
+		 	
+	Generadores:
+		abrirPeaje:	dicc(vehiculo,precio) x dicc(cabina,limite) dc		-> peaje {¬(Ø?(claves(dc))} //Pedimos que haya al menos una cabina
+		llegaVehiculo: vehiculo v x cabina c x peaje p -> peaje {def?(c,cabinas(p)) ∧ def?(v,precios(p)}
+		facturarVehiculo: cabina c x peaje p -> peaje {def?(c,cabinas(p)) ∧L ¬(vacía?(colaDeCabina(c,p)))}
+				
+	Otras Operaciones: //Escribir despues
+		desencolarMitad: nat m x nat n x cola(vehiculo) c -> cola(vehiculo) {tamaño(c)=n} //Para pensar: se puede sacar n?
+		desencolarConVehiculo: vehiculo v x nat m x nat n x cola(vehiculo) c -> nat {tamaño(c)=n}
+		masUsadasPorVehiculo: vehiculo v x peaje p -> conj(cabina)
+		masUsadasPorVehiculoAux: vehiculo v x conj(cabinas) cc x peaje p -> conj(cabina)
+		
+	Axiomas: ∀ p: peaje, ∀c,c': cabina, ∀ v: vehiculo, ∀ pr: dicc(vehiculo,precio), ∀ lim: dicc(cabina,limite)
+		precios(abrirPeaje(pr,lim)) ≡ pr
+		precios(llegaVehiculo(v,c,p)) ≡ precios(p)
+		precios(facturarVehiculo(c,p)) ≡ precios(p)
+		
+		cabinas(abrirPeaje(pr,lim)) ≡ lim
+		cabinas(llegaVehiculo(v,c,p)) ≡ cabinas(p)
+		cabinas(facturarVehiculo(c,p)) ≡ cabinas(p)
+		
+		colaDeCabina(c, abrirPeaje(pr,lim)) ≡ vacía
+		
+		colaDeCabina(c, llegaVehiculo(v,c',p)) ≡ if c=c' then
+				if tamaño(colaDeCabina(c,p)) = obtener(c,cabinas(p)) - 1 then
+					desencolarMitad(0,tamaño(colaDeCabina(c,p))+1,encolar(v,colaDeCabina(c,p)))
+				else
+					encolar(v,colaDeCabina(c,p))
+				fi
+	
+		else
+			if tamaño(colaDeCabina(c',p)) = obtener(c',cabinas(p)) - 1 then
+					desencolarMitad(0,tamaño(colaDeCabina(c,p))+1,colaDeCabina(c,p))
+			else
+				colaDeCabina(c,p)
+			fi
+		fi
+	
+		desencolarMitad(m,n,q) ≡ if m≥n then q else desencolarMitad(m+1,n-1,desencolar(q)) fi
+		
+		colaDeCabina(c,facturarVehiculo(c',p)) ≡ if c=c' then
+			desencolar(colaDeCabina(c,p))
+		else
+			colaDeCabina(c,p)
+		fi
+		
+		facturado(c,abrirPeaje(pr,lim)) ≡ 0
+		facturado(c,llegaVehiculo(v,c',p)) ≡ facturado(c,p)
+		facturado(c,facturarVehiculo(c',p)) ≡ if c=c' then
+			obtener(proximo(colaDeCabina(c,p)),precios(p))
+		else
+			0
+		fi + facturado(c,p)
+		
+		#VehiculosPorCabina(c,v,abrirPeaje(pr,lim)) ≡ 0
+		#VehiculosPorCabina(c,v,llegaVehiculo(v',c',p)) ≡ if tamano(colaDeCabina(c',p))= obtener(c',cabinas(p)) -1  then
+			if c=c' then desencolarConVehiculo(v,0,tamaño(colaDeCabina(c,p))+1,encolar(v',colaDeCabina(c,p))) else
+			 desencolarConVehiculo(v,0,tamaño(colaDeCabina(c,p)),colaDeCabina(c,p)) fi + #VehiculosPorCabina(c,v,p)
+		else
+			 #VehiculosPorCabina(c,v,p)
+		fi
+		
+		#VehiculosPorCabina(c,v,facturarVehiculo(c',p)) ≡ β(c=c')+ #VehiculosPorCabina(c,v,p)
+		
+		desencolarConVehiculo(v,m,n,q) ≡ if m≥n then
+			0
+		else
+			β(proximo(q) = v) + desencolarConVehiculo(v,m+1,n-1,desencolar(q))
+		fi
+		
+		
+		masUsadasPorVehiculo(v,p) ≡ masUsadasPorVehiculoAux(v,claves(cabinas(p)),p)
+		
+		masUsadasPorVehiculoAux(v,cc,p) ≡ if #(cc)=1 then //Al menos hay una cabina en el peaje, asi que si solo hay una, es por ella por la que mas pasaron (pueden ser 0 veces)
+			cc
+		else
+			if #VehiculosPorCabina(dameUno(cc),v,p)> #VehiculosPorCabina(dameUno(masUsadasPorVehiculoAux(v,sinUno(cc),p))) then //comentario al final*
+				{dameUno(cc)}
+			else
+				if #VehiculosPorCabina(dameUno(cc),v,p)= #VehiculosPorCabina(dameUno(masUsadasPorVehiculoAux(v,sinUno(cc),p))) then
+					Ag(dameUno(cc), masUsadasPorVehiculoAux(v,sinUno(cc),p))
+				else
+					masUsadasPorVehiculoAux(v,sinUno(cc),p)
+				fi
+			fi
+		fi 
+		
+		//La idea es que estamos comparando cuantos vehiculos v pasaron por una cabina c vs cuantos pasaron por una de las que mas pasaron
+		//sin tener en consideración a c (si el conjunto tiene mas de un elemento, es que pasaron la misma cantidad de veces por todas)
+Fin TAD
