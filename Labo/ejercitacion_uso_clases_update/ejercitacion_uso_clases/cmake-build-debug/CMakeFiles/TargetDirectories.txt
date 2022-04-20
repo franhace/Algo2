@@ -1,0 +1,6 @@
+/home/ff/Facu/Algo22/Labo/ejercitacion_uso_clases_update/ejercitacion_uso_clases/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion_uso_clases_update/ejercitacion_uso_clases/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion_uso_clases_update/ejercitacion_uso_clases/cmake-build-debug/CMakeFiles/gtest.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion_uso_clases_update/ejercitacion_uso_clases/cmake-build-debug/CMakeFiles/tests_ejercitacion.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion_uso_clases_update/ejercitacion_uso_clases/cmake-build-debug/CMakeFiles/tests_algobot.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion_uso_clases_update/ejercitacion_uso_clases/cmake-build-debug/CMakeFiles/gtest_main.dir

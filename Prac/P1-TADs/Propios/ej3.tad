@@ -1,0 +1,19 @@
+------------- EJERCICIO 3 ------------------
+
+-- preguntar
+agregarTodos: nat n x conj(conj(nat)) c → conj(conj(nat))
+agregarTodos: 
+	if vacía?(c) then
+		Ag(Ag(n,Ø), Ø)
+	else
+		Ag(Ag(n,dameUno(c)), agregarTodos(n, sinUno(c)))
+	fi
+	
+c=[1,2,3]
+
+
+
+PartesDe: conj(nat) c → conj(conj(nat))
+PartesDe: c ∪ agregarTodos(dameUno(c), PartesDe(sinUno(c))) ∪ PartesDe(sinUno(c))
+
+-- Ej 4

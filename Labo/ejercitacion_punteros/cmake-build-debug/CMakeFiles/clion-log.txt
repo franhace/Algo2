@@ -1,0 +1,5 @@
+/home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/ff/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/213.7172.20/bin/ninja/linux/ninja -G Ninja /home/ff/Facu/Algo22/Labo/ejercitacion_punteros
+Test:src/Internet.cppsrc/ConexionJugador.cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ff/Facu/Algo22/Labo/ejercitacion_punteros/cmake-build-debug

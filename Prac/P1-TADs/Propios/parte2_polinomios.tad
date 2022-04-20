@@ -1,0 +1,260 @@
+// evaluar un polinomio en un n
+// ver si un n es raiz
+-- (Ej7) polinomio 
+TAD POLINOMIO
+	Igualdad Observacional:();
+	Géneros: polinomio	
+	Observadores Básicos:
+		Evaluar: polinomio x nat → nat
+	Generadores:
+		Cte: nat → polinomio
+		X: → polinomio
+		• + •: polinomio x polinomio → polinomio
+		• x •: polinomio x polinomio → polinomio
+	Otras Operaciones:
+		esRaiz?: polinomio x nat → bool
+	Axiomas:
+		Evaluar(Cte(a), n) ≡ a
+		-- preguntar
+		Evaluar(X, n) ≡ n
+		EsRaiz?(a,n) ≡ Evaluar(a,n) = 0
+a = 2x + 3
+b = x2 + x - 1 
+Fin TAD
+
+-- Ej8 Robot
+TAD Coordenada ES ⟨Entero x Entero⟩
+TAD Robot
+	Igualdad Observacional:(∀ r1,r2: robot)(r1 =obs r2 ↔ (Trayectoria(r1)=Trayectoria(r2)));
+	Géneros: robot
+	Observadores Básicos:
+		Trayectoria: robot → secu(coordenada)
+	Generadores:
+		Ubicar: coordenada → robot
+		Arriba: robot → robot
+		Abajo: robot → robot
+		Izq:: robot → robot
+		Der: robot → robot
+	Otras Operaciones:
+		PosActual: robot → coordenada
+		CuantasVecesPaso: coordenada x robot → nat
+		MasALaDer: robot → coordenada
+	Axiomas:
+		Trayectoria(Ubicar(c)) ≡ c • <>
+		Trayectoria(Arriba(r)) ≡ Trayectoria(r) • <π₁(PosActual(r)) - 1, π2(PosActual(r)>
+		Trayectoria(Abajo(r)) ≡ Trayectoria(r) • <π₁(PosActual(r)) + 1, π₁(PosActual(r)>
+		Trayectoria(Izq(r)) ≡ Trayectoria(r) • <π₁(PosActual(r)), π2(PosActual(r)) - 1>
+		Trayectoria(Der(r)) ≡ Trayectoria(r) • <π₁(PosActual(r)), π2(PosActual(r)) + 1>
+		
+		PosActual(Ubicar(c)) ≡ c
+		-- preguntar
+		PosActual(Arriba(r)) ≡ <π₁(ult(Trayectoria(r)) - 1, π2(ult(Trayectoria(r)>
+		PosActual(Abajo(r)) ≡ <π₁(ult(Trayectoria(r)) + 1, π₁(ult(Trayectoria(r)>
+		PosActual(Izq(r)) ≡ <π₁(ult(Trayectoria(r)), π2(ult(Trayectoria(r)) - 1>
+		PosActual(Der(r)) ≡ <π₁(ult(Trayectoria(r)), π2(ult(Trayectoria(r)) + 1>
+		
+		CuantasVecesPaso(c, r) ≡ #apa(Trayectoria(r), c)
+		
+		-- preguntar
+		-- revisar
+		maxx(secu(coordenada)) s → coordenada {¬vacía?(s)}
+		maxx(e • s) ≡ 
+			if vacía?(s) then
+				π2(e)
+			else
+				max(π2(e), π2(maxx(s))
+			fi
+		MasALaDer(r) ≡ maxX(Trayectoria(r))
+		
+Fin TAD
+
+-- Ej9 electroiman
+electroiman
+Axiomas:
+	Cinta(Arrancar(c)) ≡ c
+	Cinta(Prender(e)) ≡ 
+		if CeldaActualOcupada?(e) then
+			SacarElemento(Cinta(e))
+		else
+			Cinta(e)
+		fi
+	Cinta(Apagar(e)) ≡
+		if ImanCargado?(e) then
+			PonerElemento(Cinta(e))
+		else
+			Cinta(e)
+		fi
+	Cinta(<-(e)) ≡ Cinta(e)
+	Cinta(->(e)) ≡ Cinta(e)
+	
+	ImanPrendido?(Arrancar(c)) ≡ false
+	ImanPrendido?(Prender(e)) ≡ true
+	ImanPrendido?(ImanCargado?(e)) ≡ true
+	ImanPrendido?(Apagar(e)) ≡ true
+	-- preguntar
+	ImanPrendido?(<-(e)) ≡ ImanPrendido?(e)
+	ImanPrendido?(->(e)) ≡ ImanPrendido?(e)
+	
+	-- preguntar todas
+	ImanCargado?(Arrancar(c)) ≡ false
+	ImanCargado?(Prender(e)) ≡ CeldaActualOcupada?(e)
+	ImanCargado?(Apagar(e)) ≡ 
+	CeldaActualOcupada?()
+Fin TAD
+
+-- Cinta
+Axiomas:
+	#Celdas(Arrancar(n)) ≡ n
+	#Celdas(PonerElemento(c)) ≡ #Celdas(c)
+	#Celdas(SacarElemento(c)) ≡ #Celdas(c)
+	#Celdas(<-(c)) ≡ #Celdas(c)
+	
+	-- preguntar estos
+	CeldaOcupada?(Arrancar(n), c) ≡ false
+	CeldaOcupada?(n, PonerElemento(c)) ≡ true
+	CeldaOcupada?(n, SacarElemento(c)) ≡ true
+	
+	CeldaActual(Arrancar(c)) ≡ 0
+	CeldaActual(PonerElemento(c)) ≡ CeldaActual(c)
+	CeldaActual(SacarElemento(c)) ≡ CeldaActual(c)
+	CeldaActual(SacarElemento(c)) ≡ CeldaActual(c)
+	CeldaActual(<-(c)) ≡
+		if CeldaActual(c) = 0 then
+			#Celdas(c) - 1
+		else
+			CeldaActual(c) - 1
+		fi
+	
+	#Giros<-(Arrancar(c)) ≡ 0
+	-- preguntar 
+	#Giros<-(Prender(e)) ≡ #Giros<-(e)
+	#Giros<-(Apagar(e)) ≡ #Giros<-(e)
+	#giros<-(<-(e)) ≡ #Giros<-(e) + 1
+	#giros<-(->(e)) ≡ #Giros->(e) + 1
+Fin TAD
+
+-- Ej10 fila
+TAD FILA
+Igualdad Observacional:();
+	Géneros: fila
+	Exporta: nombreTad, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		Esperando: persona p x fila f→ bool
+		Posicion: persona p x fila f → nat {Esperando(p,f)}
+	Generadores:
+		AbrirVentanilla: → fila
+		Llegar: persona p x fila f → fila
+		Atender: fila f → fila {¬vacía?(f)}
+		Retirarse: persona p x fila f → fila
+		ColarseAdelanteDe: persona p x persona q x fila f → fila
+	Otras Operaciones:
+		Vacia: fila → bool
+		Longitud: fila → nat
+		SeColo?: persona p x fila f → bool
+		Entro?: persona p x fila f → bool
+		FueAtendido?: persona p x fila f → bool
+	Axiomas:
+		Esperando(p, AbrirVentanilla) ≡ false 
+		Esperando(p, Llegar(p',f)) ≡ p=p' ∨ Esperando(p,f)
+		Esperando(p, Atender(f)) ≡ Esperando(p, f) ∨ ¬(Posicion(p,f) = 1)
+		Esperando(p, Retirarse(p',f)) ≡ Esperando(p,f) ∧ ¬(p=p')
+		Esperando(p, ColarseAdelanteDe(p',q,f)) ≡ p=p' ∨ Esperando(p,f)
+		 
+		// Posicion(p, AbrirVentanilla) ≡ no va 
+		Posicion(p, Llegar(p',f)) ≡ 
+			if p=p' then
+				Longitud(f) + 1
+			else
+				Posicion(p,f)
+			fi
+		Posicion(p, Atender(f)) ≡ Posicion(p,f) - 1
+		Posicion(p, Retirarse(p',f)) ≡
+		 	Posicion(p,f) - β(Posicion(p') > Posicion(p))
+		Posicion(p, ColarseAdelanteDe(p',q,f)) ≡ 
+			Posicion(p,f) + β(¬(p=p'))
+		
+		Longitud(AbrirVentanilla) ≡ 0
+		Longitud(Llegar(p,f)) ≡ Longitud(f) + 1
+		Longitud(Atender(f)) ≡  Longitud(f) - 1
+		Longitud(Retirarse(p,f)) ≡ Longitud(f) - 1
+		Longitud(ColarseAdelanteDe(p,q,f)) ≡ Longitud(f) + 1
+		
+		
+		Entro?(p, AbrirVentanilla) ≡ false 
+		-- preguntar
+		Entro?(p, Llegar(p',f)) ≡ true
+		Entro?(p, Atender(f)) ≡ true
+		Entro?(p, Retirarse(p',f)) ≡ true
+		Entro?(p, ColarseAdelanteDe(p',q,f)) ≡ true
+		
+		FueAtendido?(p, AbrirVentanilla) ≡ false 
+		FueAtendido?(p, Llegar(p',f)) ≡ true
+		FueAtendido?(p, Atender(f)) ≡ true
+		FueAtendido?(p, Retirarse(p',f)) ≡ true
+		FueAtendido?(p, ColarseAdelanteDe(p',q,f)) ≡ true
+		
+		-- preguntar
+		SeColo?(p, Llegar(p',f)) ≡
+			if p=p' then
+				false
+			else
+				SeColo?(p,f)
+			fi
+			-- preguntar 3 de abajo
+		SeColo?(p, Atender(f)) ≡ SeColo?(p,f)
+		SeColo?(p, Retirarse(p',f)) ≡ SeColo?(p,f)
+		SeColo?(p, ColarseAdelanteDe(p',q,f)) ≡ ¬(p=p')
+			
+			
+		Vacia?(f) ≡ Longitud(f) = 0
+		
+Fin TAD
+
+-- 	ej11 - stock
+TAD Producto ES String
+
+TAD Stock
+	Igualdad Observacional:();
+	Géneros: stock
+	Exporta: nombreTad, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		#comprados: Producto p x stock s → nat {enStock(p,s)}
+		#vendidos: Producto p x stock s → nat {enStock(p,s)}
+		
+		-- version ofi
+		productosDelStock: stock s → conj(producto)
+		cantidad: stock s x producto p → nat 
+		
+	Generadores:
+		stock: → stock
+		agrNuevo: Producto p x nat c x stock s → stock {¬enStock(p,s)}
+		comprar: Producto p x nat c x stock s → stock {enStock(p,s)}
+		vender: Producto p x nat c x stock s → stock {enStock(p,s)}
+		agrSustituto: Producto p x Producto p → dic {enStock(p1,s) ∧ enStock(p2,s)}
+		
+		-- version ofi
+		iniciarSis: conj(producto x nat) → stock
+		comprar: producto p x nat x stock s → stock {enStock(p,s)}
+		
+	Otras Operaciones:
+		
+		enStock?: Producto p x stock s → bool 
+		esSustituto?: Producto p1 x Producto p2 x stock s → bool
+		Sustituto: Producto p x stock s → Producto
+		
+		-- version ofi
+		vender: producto p x nat c x stock s → stock {enStock(p,s) ∧ k ≤ cantidad(s,p)}
+	Axiomas:
+		-- version ofi
+		-- preguntar las de abajo
+		productosDelStock(iniciarSis(p, c)) ≡ 
+		productosDelStock(comprar(p, c, s)) ≡ 
+		cantidad(p, c, iniciarSis(p',c)) ≡ 
+		cantidad(comprar(p,c,s)) ≡ cantidad(p,s) + c
+		vender(p, c, iniciarSis(p,c)) ≡
+		vender(p, c, comprar(p',c',s)) ≡
+Fin TAD

@@ -1,0 +1,61 @@
+------------- EJERCICIO 2 ------------------
+
+a)
+#Hojas : ab(α) →  nat
+
+#Hojas(nil) ≡ 0
+
+#Hojas(r) ≡  if nil?(r)
+                then 0 
+                else       
+                    if esHoja?(r)
+                        then 1
+                        else #Hojas(der(r)) + #Hojas(izq(r))
+                    fi 
+             fi
+
+b)
+
+DegeneradoAIzq : ab(α) → bool
+
+DegeneradoAIzq(nil) ≡ true
+DegeneradoAIzq(bin(a, r, b)) ≡ if ¬nil?(b) 
+                            then false 
+                            else esHoja?(a) ∨  DegeneradoAIzq(a) 
+                                --sin esHoja? funciona, creo
+                          fi
+
+
+c) --preguntar 
+zigZag : ab(α) → bool 
+soloIzq : ab(α) → bool
+soloDer : ab(α) → bool
+
+soloIzq(nil) ≡ true --resp Der
+soloIzq(a)≡ if nil?(der(a)) then true else false fi
+soloDer(a)≡ if nil?(izq(a)) then true else false fi
+
+zigZag (nil) ≡ true
+
+zigZag(bin(a, r, b)) ≡  (soloIzq(arb) ∧ soloDer(a) ∧ zigZag(a))
+                 ∨ (soloDer(arb) ∧ soloIzq(b) ∧ zigZag(b))
+
+
+d) 
+ultimoNivelCompleto : ab → nat
+
+ultimoNivelCompleto(nil) ≡  0
+
+ultimoNivelCompleto(bin(a,r,b)) ≡  1 + min(ultimoNivelCompleto(a), ultimoNivelCompleto(b))
+                                   
+                                    
+e) 
+Espejo : Ab(α) →  Ab(α)
+
+Espejo(nil) ≡ nil 
+
+Espejo(bin(a,r,b)) ≡ bin(Espejo(b),r,Espejo(a))
+
+f) 
+esSimétrico? : Ab(α) → bool 
+esSimétrico?(a) ≡ a = Espejo(a)  

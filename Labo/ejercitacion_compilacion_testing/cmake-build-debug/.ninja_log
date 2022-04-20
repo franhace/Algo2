@@ -1,0 +1,14 @@
+# ninja log v5
+0	713	1648941357279026121	CMakeFiles/gtest_main.dir/tests/gtest-1.8.1/gtest_main.cc.o	83c8d90ca90a3605
+1	23	1648941369050828899	CMakeFiles/ej2.dir/src/Periodo.cpp.o	e2d48aaf78375521
+3247	3396	1648941359962981156	ej1	7c2154c2af8d98d6
+0	22	1648941604854876006	build.ninja	eaae9b3ddddfa242
+0	740	1648941357307025653	CMakeFiles/ej1.dir/tests/ej1_periodo.cpp.o	442f22d6022d5bf9
+3209	3247	1648941359814983635	libgtest.a	ff3a05ec3aff9771
+0	22	1648941356591037647	CMakeFiles/ej1.dir/src/Periodo.cpp.o	5118ac06090326f6
+714	724	1648941357291025920	libgtest_main.a	613df8cab98d8b6b
+0	3209	1648941359770984373	CMakeFiles/gtest.dir/tests/gtest-1.8.1/gtest-all.cc.o	935956a75ce24bf5
+1	26	1648941702177603783	CMakeFiles/ej3.dir/src/Funciones.cpp.o	4310eeaef0044f13
+1	32	1648941702181603735	CMakeFiles/ej3.dir/src/Periodo.cpp.o	5139f37db9ecc9f3
+1	702	1648941702849595910	CMakeFiles/ej3.dir/tests/ej3_funciones.cpp.o	2475f553895b9418
+1	687	1648942044057211656	CMakeFiles/ej2.dir/tests/ej2_periodo_y_fecha.cpp.o	6ddfaba8b45f60af

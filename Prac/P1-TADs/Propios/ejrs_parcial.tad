@@ -1,0 +1,445 @@
+-- Ej15
+La cantidad de alumnos que rinde el parcial es fija
+-> conj fijo de alumnos 
+
+
+-- p saber quien esta en el baño: 
+- alumnoEnBaño
+- BañoOcupado?
+-- p ir o salir del baño
+- irAlBaño (ver si esta o no ocupado el baño)
+- sentarse (tieneQueEstarEsperando / en la secu(Alumno)
+de la fila)
+- puedeIrAlBaño? (limite de 3 veces)
+- #visitasAlBaño
+-- p saber quien en fila
+- cantidadEsperando
+- secu(Alumno)
+
+-- comport auto: si hay num >= 5 de personas en la fila
+pasan todas 
+
+TAD Alumno es Nat
+TAD Examen
+	Igualdad Observacional:
+	(∀ A,B: examen) A =obs B ↔
+	(alumnos(A) = alumnos(B) ∧L
+	(∀ f: alumno) f ∈ alumnos(A) ⇒L 
+	enFila?(f, A) = enFila?(f, B) ∧L
+	(enFila?(f, A) ⇒L prioridad(f,A) = prioridad(f,B)) ∧L
+	enBaño?(f,A) = enBaño?(f,B) ∧L
+	#visitasAlBaño(f,A) = #visitasAlBaño(f,B))
+	Géneros: examen
+	Exporta: examen, observadores, generadores, 
+	Usa: Bool, Nat, Conj
+	Observadores Básicos:
+		alumnos: examen → conj(alumno)
+		enBaño?: alumno a x examen e → bool {a ∈ alumnos(e)}
+		enFila?: alumno a x examen e → bool {a ∈ alumnos(e)}
+		#visitasAlBaño: alumno a x examen e → nat {a ∈ alumnos(e)}
+		prioridad: alumno a x examen e → nat {a ∈ alumnos(e) ∧L EnFila?(a,e)}
+	Generadores:
+		arrancarExamen: conj(alumno) ca → examen
+		pararse: alumno a x examen e → examen 
+		volver: examen e → examen
+	Otras Operaciones:
+		puedeIrAlBaño?: alumo a x examen e → bool
+		BañoOcupado?: examen e → bool
+		cantidadEsperando: examen e → nat
+		sentarse: alumno a x examen e → examen
+		puedePararse?: alumno a x examen → bool
+		alumnosEnBaño: examen e → conj(alumno)
+	Axiomas:
+		alumnosEnBaño(e) ≡ alumnosEnBañoAux(alumnos(a), e)
+		alumnosEnBañoAux(alumnos(a), e) ≡ 
+			if vacía?(c) then
+				{Ø}
+			else
+				if enBaño?(dameUno(c),e) then
+					{dameUno(c)}
+				else
+					{Ø}
+				fi ∪ alumnosEnBañoAux(sinUno(c),e)
+			fi
+		puedePararse?(a,e) ≡
+			¬enBaño?(a,e) ∧L ¬enFila?(a,e) ∧L CuantasVecesPaso(a,e) menor 3
+		--
+		cantidadEsperando(e) ≡ auxFila(alumnos(e), e)
+		auxFila(c,e) ≡
+			if vacía?(c) then
+				0
+			else
+					if enFila?(dameUno(c),e) then
+						1
+					else
+						0
+					fi
+					+ auxFila(sinUno(c), e)
+			fi
+		LeTocaPronto(a,e) ≡ prioridad(a,e) = 1 ∨ cantidadEsperando(e) ≥ 5
+		-- preguntar 2 de abajo
+		sentarse(a, pararse(a',e)) ≡
+			if a=a' then
+				e
+			else
+				sino
+			fi
+		sentarse(a, volver(e)) ≡ 
+		--
+		#prioridad(a,pararse(a',e)) ≡
+			if a=a' then
+				cantidadEsperando(e) + 1
+			else
+				prioridad(a,e)
+			fi
+		#prioridad(a,volver(e)) ≡ prioridad(a,e) - 1
+		--
+		#visitasAlBaño(a,arrancarExamen(ca)) ≡ 0
+		-- preguntar 2 de abajo, ir a la fila es ir al bano?
+		#visitasAlBaño(a,pararse(a',e)) ≡
+			if a=a' then
+				visitasAlBaño(a,e) + 1
+			else
+				visitasAlBaño(a,e)
+			fi
+		#visitasAlBaño(a,volver(e)) ≡ 
+			#visitasAlBaño(a,e) - β(EnFila?(a,e))
+		--
+		enFila?(a, arrancarExamen(ca)) ≡ false
+		enFila?(a, pararse(a',e)) ≡ 
+			if a=a' then
+				BañoOcupado?(e)
+			else
+				enFila?(a,e)
+			fi
+		enFila?(a, volver(e)) ≡ EnFila?(a,e) ∧L ¬LeTocaPronto(a,e)
+		--
+		enBaño?(a, arrancarExamen(ca)) ≡ false
+		enBaño?(a, pararse(a',e)) ≡ 
+			if a=a' then
+				¬BañoOcupado?(e)
+			else
+				enBaño?(a,e)
+			fi
+		enBaño?(a, volver(e)) ≡ enFila?(a,e) ∧L LeTocaPronto(a,e)
+		-- preguntar 
+		alumnos(arrancarExamen(ca)) ≡ ca
+		alumnos(pararse(a,e)) ≡ alumnos(e)
+		alumnos(volver(ca)) ≡ alumnos(e)
+		
+Fin TAD
+
+
+-- Ej20 - tecnicos a domicilio
+
+TAD Direccion 
+	Exporta:
+		distancia(d,d'): .. x .. → nat
+TAD Tecnico es String
+
+-obs
+~tecnicoEnBase?(tecnico, TaD)~
+
+#visitasADir: tecnico t, direccion d, TaD → nat
+pendientesDeAsignacion: TaD → secu(direccion) 
+tecnicos: TaD → conj(tecnico)
+tecnicosLibres: TaD → conj(tecnico)
+dirActual: tecnico x TaD → direccion {t ∈ tecnicos(TaD) ∧ t ∉ tecnicosLibres(TaD)}
+
+-gen
+asignar: tecnico t x direccion d x TaD → TaD
+terminar(d): direccion → TaD
+agrTurno: direccion x nat h → TaD
+
+-automatismo:
+cuando un tecnico esta en una dire y termina va
+automaticamente a la mas cerca de las pendientesDeAsignacion
+de haber 2 a la misma distancia va a la que mas tiempo lleva 
+esperando
+
+TAD TaD
+	Igualdad Observacional:
+	(∀ A,B: TaD) A =obs B ↔ 
+	(
+	(tecnicos(A) = tecnicos(B)) ∧L
+	(pendientesDeAsignacion(A) = pendientesDeAsignacion(B)) ∧L
+	(tecnicosLibres(A) = tecnicosLibres(B)) ∧L	
+	(∀ t: tecnico) t ∈ tecnicos(A) ⇒L 
+	dirActual(t, A) = dirActual(t, B) ∧L
+	((∀ d: direccion)(
+		visitasADir(t,d,A) = visitasADir(t,d,B)
+		))
+	)
+	;
+	Géneros: nombreTad
+	Exporta: nombreTad, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		tecnicos: TaD → conj(tecnico)
+		tecnicosLibres: TaD → conj(tecnico)
+		pendientesDeAsignacion: TaD → secu(direccion) 
+		dirActual: tecnico x TaD → direccion {t ∈ tecnicos(TaD) ∧ t ∉ tecnicosLibres(TaD)}
+		#visitasADir: tecnico t, direccion d, TaD → nat
+	Generadores:
+		iniciar: conj(tecnico) → TaD
+		~asignar: tecnico t x direccion d x TaD → TaD~
+		solicitar: direccion d x TaD → TaD
+		terminar: tecnico t x TaD → TaD {t ∈ tecnicos(T) ∧L t ∉ tecnicosLibres(T)}
+	Otras Operaciones:
+		MasVisitaron: direccion d x tad → conj(tecnico)
+	Axiomas:
+		
+		#visitasADir(t,d,iniciar(t)) ≡ 0
+		#visitasADir(t, d1, solicitar(d2, T)) ≡ 
+			#visitasADir(t,d,T) + β((#(tecnicosLibres(T)≥1) ∧L t = dameUno(tecnicosLibres(T)) ∧L
+				d1 = d2 ))
+		#visitasADir(t, d, terminar(t', T)) ≡ 
+			#visitasADir(t,d,T) + β(t = t' ∧L #pendientes(T) ≥ 1 ∧L masCercana(t,T) = d)
+
+		
+		dirActual(t, solicitar(d, T)) ≡ 
+			if t ∈ tecnicosLibres(T) then
+				d
+			else
+				dirActual(t, T)
+			fi
+		dirActual(t, terminar(t', T)) ≡
+			if t = t' then
+				masCercana(t, T)
+			else
+				dirActual(t,T)
+			fi
+		
+		
+		pendientesDeAsignacion(iniciar(ct)) ≡  <>
+		pendientesDeAsignacion(solicitar(d, T)) ≡ 
+		 	if #(tecnicosLibres(T)) ≥ 1 then
+		 		pendientesDeAsignacion(T)
+		 	else
+		 		pendientesDeAsignacion(T) • d
+		 	fi
+		pendientesDeAsignacion(terminar(t, T)) ≡
+			if vacía?(pendientesDeAsignacion(T)) then
+				<>
+			else
+				borrar(masCercana(t,T), pendientesDeAsignacion(T))
+			fi
+		
+		masCercana: tecnico x tad → direccion {t ∈ tecnicos(T) ∧ t ∉ tecnicosLibres(T) ∧L
+																					¬vacía?(pendientesDeAsignacion(T))}
+		masCercana(t, T) ≡ MasCerca(dirActual(t,T), pendientesDeAsignacion(T)) {¬vacía?(pendientesDeAsignacion(T))}
+		MasCerca: direccion x secu(direccion) → direccion
+		MasCerca(d,ds) ≡ 
+			if long(ds) = 1 then
+				prim(ds)
+			else
+				if distancia(d, prim(ds)) ≤ distancia(d, MasCerca(d, fin(ds))) then
+					prim(ds)
+				else
+					MasCerca(d, fin(ds))
+				fi
+			fi
+		
+		 																					
+		-- preguntar ct o {Ø}
+		tecnicosLibres(iniciar(ct)) ≡  
+		tecnicosLibres(solicitar(d, T)) ≡ 
+			if # tecnicosLibres(T) ≥ 1 then
+				sinUno(tecnicosLibres(T))
+			else
+				{Ø}
+			fi
+		tecnicosLibres(terminar(t, T)) ≡
+			if vacía?(pendientesDeAsignacion(T)) then
+				Ag(t, tecnicosLibres(T))
+			else
+				tecnicosLibres(T)
+			fi
+		
+		tecnicos(iniciar(ct)) ≡ ct
+		tecnicos(solicitar(d, T)) ≡ tecnicos(T)
+		tecnicos(terminar(t, T)) ≡ tecnicos(T)
+Fin TAD
+
+-- ej redes en paralelo (rep)
+TAD Usuario ES String
+TAD Red ES String
+TAD REP
+	Igualdad Observacional:();
+	Géneros: nombreTad
+	Exporta: nombreTad, conj(usuario)observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		usuarios: rep → conj(usuario)
+		redes: rep → conj(red)
+		miembro: usuario u x red r x rep → bool {u ∈ usuarios(rep) ∧ r ∈ redes}
+		amigosEn: usuario u1 x usuario u2 x red r x rep → bool {u1,u2 ∈ usuarios(rep) ∧ r ∈ redes(rep)}
+	Generadores:
+		iniciar: conj(red) → rep
+		agrUsuario: usuario u x rep → rep {u ∉ usuarios(rep)}
+		agrEnRed: usuario u x red r x rep → rep {u ∈ usuarios(rep) ∧ r ∈ redes(rep)}
+		agrAmistadEnRed: usuario u1 x usuario u2 x red r x rep → rep {u1 ≠u2 ∧ u1,u2 ∈ usuarios(rep) ∧ r ∈ redes(rep)
+																																	∧L  miembro(u1,r,rep) ∧ miembro(u2,r, rep) ∧ ¬amigosEn(u1,u2,r,rep)}
+	Otras Operaciones:
+		sonAmigos?: usuario u1 x usuario u2 x rep → bool
+		superAmigos: usuario u1 x usuario u2 x rep → bool {{u1,u2} ⊆ usuarios(rep)}
+	Axiomas:
+Fin TAD
+
+-- ej gestion ventanillas 
+
+- hay n ventanillas : 0 -> n-1
+- cada ventanilla puede manejar 1 o varios tramites
+- hay una cantidad fija de ventanillas y los tipo de tramites
+que puede manejar cada una
+abrirVentanillas: conj(nat x conj(tramite)) → AP
+recibirCliente: cliente c x tramite t x AP → AP
+- siempre recibir cliente en ventanilla con numero mas bajo
+- si no hay ventanilla libre se queda esperando
+- siempre se atiende al cliente que este esperando hace mas tiempo
+- ventanilla puede quedar libre ( asi deberian arrancar todas )
+- no se pueden ir sin ser atendidas
+- 
+- obs: clientesEsperando, ventanillas, ventanillaLibre?, enVentanilla
+tramitesPorVentanilla
+TAD Tramite ES String
+TAD Cliente ES Nat ( DNI )
+TAD Ventanilla ES Nat
+TAD AtencionAlPublico
+	Igualdad Observacional:();
+	Géneros: nombreTad
+	Exporta: nombreTad, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		tramitesPorVentanilla: ventanilla x ac → conj(tramite) {v ∈ ventanillas(ap)}
+		ventanillaLibre?: ventanilla x ac → bool {v ∈ ventanillas(ap)}
+		enVentanilla: ventanilla x ac → dni {v ∈ ventanillas(ap) ∧L ¬ventanillaLibre(v, ap)}
+		fila: ac → secu(dni) 
+		tramiteCliente: dni x ac → tramite
+	Generadores:
+		abrir: dicc(ventanilla, conj(tramite)) → ac {(∀ v: ventanilla) v < #claves(dic) ⇒L
+																									(def?(n, dic) ∧L ¬Ø?(obtener(n,dic)) )}
+		llegar: dni n x tramite t x ac → ac { ¬(n ∈(clientes(ac))) ∧L (∃ v: ventanilla)(v ∈ ventanillas(ac) ∧L t ∈ tramitesPorVentanilla(n, ac)) }
+		terminar: dni n x ac → ac {(∃ v: ventanilla) v ∈ ventanillas(ac) ∧L  enVentanilla(v,ac) = n}
+	Otras Operaciones:
+		otra:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+	Axiomas:
+		obs?(nil)	= 	true
+		otra(t, n)	= 	n
+		...
+Fin TAD
+
+----------------------------------------------------------------
+
+-- centro comunitario carpinteros
+
+TAD Miembro ES String
+
+
+TAD ccc
+	Igualdad Observacional:();
+	Géneros: ccc
+	Exporta: nombreTad, observadores, generadores, 
+	Usa: Bool, Nat
+	-- restricciones:
+	- cuando se agrega nuevo miembro, tiene nivel 1 (auto) y 
+	su tutor puede ser cualquier miembro con nivel > 1
+	- si al avanzar de nivel, nivel(alumno) ≥ nivel(tutor) se le asigna uno nuevo
+	- en caso de que nivel(alumno) = 10 pasa a ser parte de maestros
+	- desertores: 
+	 - si miembro m abandona, sus alumnos pasar a ser alumnos del tutor
+	 	del que abandono
+	 - si este era un maestro pasan a la tutela de otro maestro
+	Observadores Básicos:
+		maestros: ccc → conj(miembro)
+		alumnos: ccc → conj(miembro)
+		alumnosDe: miembro m x ccc → miembro {m ∈ alumnos(ccc)}
+		nivel: miembro m x ccc → nat {m ∈ alumnos(ccc)}
+		abandonaron: ccc → conj(miembro)
+	Generadores:
+		iniciar: conj(miembro) c → ccc {¬Ø?(c)} 
+		agrMiembro: miembro m x ccc → ccc  {m ∉ alumnos(ccc) ∪ maestros(ccc) u abandonaron(ccc)}
+		avanzarNivel: miembro m x ccc → ccc {m ∈ alumnos(ccc) ∧ m ∉ maestros(ccc) "nivel(m,ccc) < 10"}
+		abandonar: miembro m x ccc → ccc {(m ∈ maestros(ccc) ∧ #(maestros)>1) ∨
+																			(m ∈ maestros(ccc) ∪ alumnos(ccc))}
+	Otras Operaciones:
+		descendientes: miembro m x ccc → conj(miembro)
+		tutorDe: miembro m x ccc → miembro {m ∈ alumnos(ccc)}
+	Axiomas:
+			
+		alumnosDe(iniciar(c)) ≡ Ø
+		alumnosDe(m, agrMiembro(m',c)) ≡
+			if m=m' then
+				{Ø}
+			else
+				if (nivel(m,c)>1 ∧ m = dameUno(maestros(c) ∪ alumnos(c))  then
+					alumnosDe(c,p) ∪ {p'}
+				else
+					alumnos(c,p)
+				fi
+			fi
+		alumnosDe(m, avanzarNivel(m',c)) ≡
+			if m=m' ∧ m ¬ ∈ maestros(c) then
+				nivel(m,c) + 1
+			else
+				nivel(m,c)
+			fi
+		alumnosDe(m, abandonar(m',c)) ≡
+			if m=m' then
+				{Ø}
+			else
+				if m' ∈ alumnos(m,c) then
+					alumnosDe(m,c) - {m'}
+				else
+					alumnosDe(m,c)
+				fi
+			fi
+		a = {b,c}
+		b = {h,j}
+		tutorDe(m,c) ≡ tutorDeAux(m,c,)
+		tutorDeAux: miembro m x ccc x conj(miembro) → miembro  
+			
+		alumnos(iniciar(c)) ≡ Ø
+		alumnos(agrMiembro(m,c)) ≡ Ag(m,alumnos(c))
+		alumnos(avanzarNivel(m,c)) ≡ alumnos(c) - (if nivel(m,c)=10 then {m} else {Ø} fi)
+		alumnos(abandonar(m,c)) ≡ alumnos(c) - (if m ∈ alumnos(c) then {m} else {Ø} fi)
+		
+		maestros(iniciar(c)) ≡ c
+		maestros(agrMiembro(m,c)) ≡ maestros(c)
+		maestros(avanzarNivel(m,c)) ≡ 
+			if nivel(m,c) = 9 then
+				Ag(m,maestros(c))
+			else
+				maestros(c)
+			fi
+		maestros(abandonar(m,c)) ≡ 
+			if m ∈ maestros(c) then
+				maestros(c) - {m}
+			else
+				maestros(c)
+			fi
+		
+		alumnos: ccc → conj(miembro)
+		alumnosDe: miembro m x ccc → miembro {m ∈ alumnos(ccc) ∪ maestros(ccc)}
+		nivel: miembro m x ccc → nat {m ∈ alumnos(ccc)}
+		abandonaron: ccc → conj(miembro)
+Fin TAD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-

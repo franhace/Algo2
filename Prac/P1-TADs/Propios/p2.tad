@@ -1,0 +1,182 @@
+- Se espera que el sistema registre la actividad de oyentes, 
+artistas y reproducciones. v
+- registrar las canciones disponibles de cada artista, ası́ como 
+cada una de sus reproducciones por parte de lxs oyentes v
+- conocer la playlist de un determinado oyente, 
+- tener un ranking de todos lxs artistas ordenados
+según cantidad de seguidores (quienes lo tienen como favorito) 
+- y otro según la cantidad de reproducciones entre todas 
+sus canciones en la plataforma.
+
+- Cada oyente contara con una lista de reproduccion (playlist)
+de hasta 20 canciones
+- Esta playlist es un subconjunto de las canciones de lxs artistas 
+que le gustan a la persona oyente. El criterio de seleccion 
+del mismo dependera unicamente del conjunto de canciones de lxs
+artistas favoritxs, y sera definido en la etapa de diseno
+- Si la cantidad de canciones de todxs lxs artistas
+que le gustan a la persona oyente no llegara a 20, entonces 
+la playlist incluira todas estas canciones.
+De lo contrario, la playlist incluira exactamente 20 canciones.
+- Cada vez que la persona oyente indique un nuevo
+artista favorito, se actualizara su playlist, utilizando el mismo 
+criterio mencionado anteriormente --> comportamiento autom!!
+- Con el fin de brindar una mejor experiencia de usuario, 
+se quiere que cuando unx oyente escuche al menos 
+10 canciones DISTINTAS de unx determinadx artista, 
+estx ser ́a consideradx entre sus favoritxs
+
+- cancion: ⟨string, nat⟩ (nombre, #reproducciones)
+- oyente: ⟨string, multiconj(cancion)⟩ (nombre, canciones reproducidas)
+- artista: ⟨string, conj(cancion), conj(oyente)⟩ (nombre, canciones disponibles, seguidores)
+- playlist: ⟨string, conj(cancion)⟩ (π1(oyente), canciones de artistas favoritos) 
+// artista = ⟨lilBuddy, {{a1,0},{a2,0},{a3,0}},{Ø}⟩
+
+// asumo que la startup arranco sin artistas ni oyentes
+// que firmaron un contrato con algun artista y sus canciones y luego se fueron sumando oyentes 
+// y mas artistas a medida que la plataforma se hizo mas conocida
+// los artistas pueden ir lanzando nuevas canciones
+
+TAD Nombre ES String
+TAD Cancion ES Nombre 
+TAD Oyente ES ⟨nombre,multiconj(cancion)⟩
+TAD Artista ES ⟨nombre,conj(cancion),conj(oyente)⟩
+TAD Playlist ES ⟨oyente,conj(cancion)⟩
+
+TAD Estopifail
+	Igualdad Observacional:(∀ A,B:sf)(A =obs B ↔
+																		(artistas(A) = artistas(B) ∧ oyentes(A) = oyentes(B) ∧L
+																		(
+																			((∀ a: artista) a ∈ artistas(A) ⇒L (canciones(a,A) = canciones(a,B))) ∧
+																			 (∀ o: oyente) o ∈ oyentes(A) ⇒L playlist(o,A) = playlist(o,B)
+																		);
+	Géneros: sf
+	Exporta: sf, observadores, generadores, 
+	Usa: Bool, Nat, Cancion, Artista, Oyente, Playlist, Conjunto, Multiconjunto
+	
+	Observadores Básicos:
+		artistas: sf s → conj(artista)
+		oyentes: sf s → conj(oyente)
+		canciones: artista a x sf s → conj(cancion) {a ∈ artistas(s)}
+		playlist: oyente o x sf s → conj(cancion) {o ∈ oyentes(s)}
+	Generadores:
+		iniciar: → sf
+		agrArtista: artista a x sf s → sf {a ∉ artistas(s) ∧ #canciones(a)>0 ∧ Ø?(fans(a)}
+		agrOyente: oyente o x sf s → sf {o ∉ oyentes(s) ∧ #(cancionesEscuchadas(o,s))=0}
+		agrCancion: cancion c x artista a x sf s → sf {c ∉ canciones(a,s)}
+		agrFan: artista a x oyente o x sf s → sf {a ∈ artistas(s) ∧ o ∈ oyentes(s) ∧ o ∉ fans(a,s)}
+	Otras Operaciones:
+		escucharCancion: oyente o x cancion c x sf s → sf {o ∈ oyentes(s) ∧ c ∈ canciones(s)}
+		cancionesEscuchadas: oyente o x sf s → multiconj(cancion)
+		fans: artista a x sf s → conj(oyente) {a ∈ artistas(s)}
+		artistasFavoritos: oyente o x sf s → conj(artista) {o ∈ oyentes(s)}
+		#reproducciones: cancion c x sf → nat {c ∈ canciones(s)}
+		cancionEnPlaylist?: cancion c x oyente o x sf s → bool
+	Axiomas:	
+		
+		artistas(iniciar) ≡ {Ø}
+		artistas(agrArtista(a,s)) ≡ Ag(a,artistas(s))
+		artistas(agrOyente(o,s)) ≡ artistas(s)
+		artistas(agrCancion(c,a,s)) ≡ artistas(s)
+		artistas(escucharCancion(o,c,s)) ≡ artistas(s)
+		artistas(agrFan(a,o,s)) ≡ artistas(s)
+		
+		canciones(a,iniciar) ≡ {Ø}
+		canciones(a,agrArtista(a,s)) ≡ canciones(a,s)
+		canciones(a,agrOyente(o,s)) ≡ canciones(a,s)
+		canciones(a,agrCancion(c,a,s)) ≡ Ag(c,canciones(a,s))
+		canciones(a,escucharCancion(o,c,s)) ≡ canciones(a,s)
+		canciones(a,agrFan(a,o,s)) ≡ canciones(a,s)
+		
+		oyentes(iniciar) ≡ {Ø}
+		oyentes(agrArtista(a,s)) ≡ oyentes(s)
+		oyentes(agrOyente(o,s)) ≡ Ag(o, oyentes(s))
+		oyentes(agrCancion(c,a,s)) ≡ oyentes(s)
+		oyentes(escucharCancion(o,c,s)) ≡ Ag(c,cancionesEscuchadas(o,s))
+		oyentes(agrFan(a,o,s)) ≡ oyentes(s)
+		
+		playlist(o,agrOyente(o',s)) ≡ {Ø}
+		playlist(o,agrArtista(a,s)) ≡ playlist(o,s)
+		playlist(o,agrCancion(c,a,s)) ≡ 
+			if o ∈ fans(a,s) ∧ #(playlist(o,s))<20 then
+				Ag(c,playlist(o,s))
+			else
+				playlist(o,s)
+			fi
+		playlist(o,escucharCancion(c,a,s)) ≡ playlist(o,s)
+		playlist(o,agrFan(a,o',s)) ≡ 
+			if o=o' then
+				Ag(dameUno(canciones(a,s) ∪ canciones(artistasFavoritos(o,s),s))) 
+			else
+				playlist(o,s)
+			fi
+			
+		#reproducciones(c,agrArtista(a,s)) ≡ 
+			if c in canciones(a,s) then
+				0
+			else
+				#reproducciones(c,s)
+			fi
+		#reproducciones(c,escucharCancion(o,c',s)) ≡ #reproducciones(c,s) + β(c=c')
+		
+		artistasFavoritos(o,agrOyente(o,s)) ≡ {Ø}
+		artistasFavoritos(o,agrArtista(a,s)) ≡ artistasFavoritos(o,s)
+		artistasFavoritos(o,agrCancion(c,a,s)) ≡ artistasFavoritos(o,s)
+		artistasFavoritos(o,escucharCancion(o',c,s)) ≡ 
+			if o=o' ∧ #(o,cancionesEscuchadas(o,s)=10) then
+				Ag(o,fans(a,s))
+			else
+				artistasFavoritos(o,s)
+			fi
+		artistasFavoritos(o,agrFan(a,o',s)) ≡ 
+			if o=o' then
+				Ag(a,artistasFavoritos(o,s))
+			else
+				artistasFavoritos(o,s)
+			fi
+				
+		fans(a,agrOyente(o,s)) ≡ fans(a)
+		fans(a,agrArtista(a,s)) ≡ fans(a)
+		fans(a,agrCancion(c,a,s)) ≡ fans(a)
+		fans(a,escucharCancion(o,c,s)) ≡ 
+			if #(o,cancionesEscuchadas(o,s)=10) then
+				Ag(o,fans(a,s))
+			else
+				fans(a,s)
+			fi
+		fans(o,agrFan(a,o',s)) ≡ 
+			if o=o' then
+				Ag(a,fans(a,s))
+			else
+				fans(a,s)
+			fi
+
+		cancionesEscuchadas(o,agrOyente(o,s)) ≡ {Ø}
+		cancionesEscuchadas(o,agrArtista(a,s)) ≡ cancionesEscuchadas(o,s)
+		cancionesEscuchadas(o,agrCancion(c,a,s)) ≡ cancionesEscuchadas(o,s)
+		cancionesEscuchadas(o,escucharCancion(o',c,s)) ≡ Ag(o,cancionesEscuchadas(o,s))
+		cancionesEscuchadas(o,agrFan(a,o',s)) ≡ cancionesEscuchadas(o,s)
+
+		cancionEnPlaylist?(c,o,agrOyente(o',s)) ≡ false
+		cancionEnPlaylist?(c,o,agrArtista(a,s)) ≡ 
+			if c ∈ canciones(a,s) then
+				false
+			else
+				cancionEnPlaylist?(c,o,s)
+			fi
+		cancionEnPlaylist?(c,o,agrCancion(c,a,s)) ≡ cancionEnPlaylist?(c,o,s)
+		cancionEnPlaylist?(c,o,escucharCancion(o',c',s)) ≡ 
+			if c=c' ∧ o=o' then
+				cancionEnPlaylist?(c,o,s)
+			else
+				sino
+			fi
+		
+		cancionEnPlaylist?(c,o,agrFan(a,o',s)) ≡ 
+			if o=o' ∧ #(playlist(o,s)) then
+				true
+			else
+				dameUno(playlist(o,s) ∪ canciones(a,s)) = c 
+			fi
+
+Fin TAD

@@ -1,0 +1,286 @@
+--------EJERCICIO 1------
+a)
+Duplicar : secu(α) → secu(α)
+
+Duplicar(⟨⟩) ≡ ⟨⟩ 
+Duplicar(x • s) ≡ x • (x • duplicar(s))
+
+duplicar(s) ≡ if vacía?(s) then ⟨⟩ else prim(s) • (prim(s) • duplicar(fin(s)))fi 
+
+b)
+•≤• : secu(α) x secu(α) → bool
+s≤t ≡ if !(vacía?(s) ∨  vacía?(t)) 
+        then prim(s) < prim(t) ∨ (prim(s) = prim(t) ∧ fin(s) ≤ fin (t))
+        else vacía?(s)
+      fi
+
+c) Reverso : secu(α) →  secu(α)
+
+Reverso(s) ≡ if vacía?(s) then ⟨⟩ else Reverso(fin(s)) ◦ prim(s) fi
+
+d) Capicúa : secu(α) → bool
+
+Capicúa(s) ≡ s == Reverso(s)
+
+--NOOOOO:
+Capicúa(c • (s ◦ f) ) ≡  if vacía?(c • (s ◦ f))  then true else c = f ∧ Capicúa(s)  -- se podría arreglar pidiendo que 
+                                                                                    -- if long(s) > 1 .. capicua(s) else true  
+    
+[1, 2, 1] →  vacía?() = falso ⇒ 1 =1 ∧ capicua([2])  → vacía?([2]) = false ⇒ no funciona
+
+
+Capicúa(c • (s ◦ f )) ≡ if
+
+e) esPrefijo? : secu(α) × secu(α) → bool
+
+esPrefijo?(s,t) ≡ if vacía?(s) then
+                    true 
+                    else 
+                        if vacía?(t) then 
+                            false
+                        else 
+                            if prim(s) = prim(t) then
+                                esPrefijo?(fin(s), fin(t))        
+                            else 
+                                false
+                            fi      
+                        fi 
+                 fi
+
+
+f) Buscar : secu(α) × secu(α) →  nat
+
+Buscar(s,t) ≡   if vacía?(s) then
+                    0
+                else 
+                    if esPrefijo?(s,t) then
+                        0
+                    else
+                        1 + Buscar(s, fin(t))  
+                    fi
+                fi
+
+g) EstáOrdenada? : secu(α) → bool
+
+
+--esto esta mal porque prin(⟨⟩) no esta definido
+EstáOrdenada?(s) ≡  if vacía?(s) then 
+                        true 
+                    else 
+                        prim(s) ≤ prim(fin(s)) ∧ EstáOrdenada?(fin(s))
+                    fi
+---------
+EstáOrdenada?(⟨⟩) ≡ true 
+
+EstáOrdenada?(x • s) ≡  if vacía?(s) then 
+                            true 
+                        else 
+                            x ≤ prim(s) ∧ EstáOrdenada?(s)
+                        fi
+
+
+h)  InsertarOrdenada : secu(α) so  × α e  →  secu(α) t {EstáOrdenada?(so)} 
+
+InsertarOrdenada(s, e) ≡ if vacía?(s) ∨L e ≤ prim(s)  then 
+                            e • s
+                         else 
+                            prim(s) • InsertarOrdenada(e,fin(s))                                 
+                         fi 
+--c/PM
+InsertarOrdenada(⟨⟩, e ) ≡  e • ⟨⟩ 
+InsertarOrdenada(x • s, e) ≡ if x ≥ e then
+                                e • (x • s)
+                             else
+                                x • InsertarOrdenada(s, e)
+                             fi
+i) 
+CantidadApariciones : secu(α) × α → nat 
+
+CantidadApariciones(s, x) ≡  if vacía?(s)
+                                then 0
+                                else 
+                                    if prim(s) = x
+                                        then 
+                                            1 + CantidadApariciones(fin(s), x)
+                                        else
+                                            CantidadApariciones(fin(s), x)
+                                    fi
+                             fi
+
+j)
+
+EsPermutacion? : secu(α) × secu(α) →  bool
+Iterador : secu(α) × secu(α) → bool
+
+Iterador( r, s, t) ≡ if vacía?(r) 
+                        then True
+                        else CantidadApariciones(s, prim(r)) = CantidadApariciones(t, prim(r)) 
+                           ∧ Iterador(fin(r), s, t)
+                     fi
+                     
+
+EsPermutacion?(s,t) ≡  long(s) = long(t) ∧ Iterador(s,s,t)
+--????????????????????????????????
+s = ⟨⟩
+t = [1,2,3,4]
+→ iterador(⟨⟩, ⟨⟩, t) → true  FALLA
+
+s = [1,2,3]
+t = [1,2,3]
+→ iterador([1,2], [1,2], [1,2,3]) →  else cantAp(s,1) = cantAp(t,1) → true
+→ iterador([2], [1,2], [1,2,3]) ...  else ...      2             2  → true 
+r = ⟨⟩
+→ iterador(⟨⟩, s, t) → true FALLA 
+
+k)
+Combinar : secu(α) s × secu(α) t → secu(α)
+           {EstáOrdenada?(s) ∧ EstáOrdenada?(t)}
+
+Combinar(s,t) ≡ if vacía(t) 
+                    then s
+                    else Combinar(InsertarOrdenada(s, prim(t)), fin(t))
+                fi
+
+
+-- mios
+a) 
+duplicar: secu(α) c → secu(α)
+duplicar: 
+	if vacía?(c) then
+		{Ø}
+	else
+		prim(c) • (prim(c) • duplicar(fin(c)))
+fi
+
+b) 
+• ≤ • : secu(α) s₁ x secu(α) s₂ → Bool
+• ≤ • : 
+	if (¬(vacía?(s1) ∨ vacía?(s2)) ) then
+		(prim(s1) menor prim(s2)) ∨ (prim(s1) = prim(s2) ∧L fin(s1) ≤ fin(s2))
+	else
+		vacía?(s1)
+	fi
+
+c) -- duda
+--v1
+reverso: secu(α) s → secu(α)
+reverso:
+	if vacía?(s) then
+		⟨⟩
+	else
+		ult(s) • reverso(com(s))
+	fi
+--v2
+reverso: 
+	if vacía?(s) then
+		⟨⟩
+	else
+		reverso(fin(s)) • prim(s)
+	fi
+	
+d) Capicúa: secu(α) → bool
+capicua: 
+	if vacía?(s) then
+		True
+	else
+		prim(s) = ult(s) ∧ capicua(com(fin(s)))
+		prim(s) = prim(reverso(s)) ∧ capicua(com(fin(s)))
+	fi
+
+e) 
+esPrefijo?: secu(α) x secu(a) → Bool
+esPrefijo?:
+	if vacía?(s1) then
+		True
+	else
+		prim(s1) = prim(s2) ∧ esPrefijo(fin(s1), fin(s2))
+	fi
+
+f)
+buscar: secu(α) x secu(α) → Nat
+buscar(a, e • s) ≡
+	if esPrefijo?(a, e • s) then
+		0
+	else
+		1 + buscar(a, s)
+	fi
+
+g)
+estaOrdenada?: secu(α) → bool
+estaOrdenada?(e • s) ≡ 
+	if vacía?(s) then
+		True
+	else
+		e menor prim(s) ∧L estaOrdenada?(fin(s))
+	fi
+
+h)
+InsertarOrdenada: secu(α) x α → secu(α)
+InsertarOrdenada(e • s, a) ≡
+	if vacía?(s) then
+		a • <>
+	else
+		if a ≤ e then
+			a • e • s
+		else
+			e • InsertarOrdenada(s, a)
+		fi
+	fi
+	
+i) 
+
+CantidadApariciones: secu(α) s x α a → nat
+CantidadApariciones: 
+	if vacía?(s) then
+		0
+	else
+		β(prim(s)=a) + CantidadApariciones(fin(s), a)
+	fi
+
+j)
+EsPermutacion?: secu(α) x secu(α) → bool
+s1=<>
+s2=<>;
+s1=<1>
+s2=<>
+EsPermutacion?(s1,s2) ≡ long(s1) = long(s2) ∧ igualCantidadApariciones(a, b, a)
+
+igualCantidadApariciones: secu(α) a x secu(α) b x secu(α) ab → Bool
+igualCantidadApariciones(a, b , e • s) ≡
+	CantidadApariciones(a, e) = CantidadApariciones(b, e) ∧ igualCantidadApariciones(a,b,s)
+	
+
+k)
+Combinar: secu(α) a x secu(a) b → secu(α)
+Combinar: 
+	if vacía?(b) then
+		a 
+	else
+	-- esto esta mal 
+	-- InsertarOrdenada(a, prim(b)) • Combinar(a, fin(b))
+		 Combinar(InsertarOrdenada(a, prim(b)), fin(b))
+	fi
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
