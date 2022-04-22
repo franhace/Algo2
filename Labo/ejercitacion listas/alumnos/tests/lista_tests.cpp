@@ -33,6 +33,7 @@ TEST(lista_test, test_agregar_varios_elementos_solo_adelante) {
     l.agregarAdelante(41);
     l.agregarAdelante(40);
     l.agregarAdelante(39);
+    cout << l << endl;
     ASSERT_EQ(l.longitud(), 4);
     ASSERT_EQ(l.iesimo(0), 39);
     ASSERT_EQ(l.iesimo(1), 40);
