@@ -1,0 +1,52 @@
+TAD CCC
+	Igualdad Observacional:
+		(∀c1,c2:CCC)(c1 =obs c2 ↔
+		(maestros(c1) =obs maestros(c2) ∧
+		desertores(c1) =obs desertores(c2) ∧
+		alumnos(c1) =obs alumnos(c2)
+		(∀a:alumno)(
+			a ∈ () ∧L
+			descendientesAcademicos(a,c1) =obs descendientesAcademicos(a,c2) ∧L
+			nivel(a,c1) = nivel(a,c2)
+			)
+		)
+	);
+	Géneros: CCC
+	Exporta: CCC, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		obs?:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+	Generadores:
+		nil:			-> nombreTad
+	Otras Operaciones:
+		otra:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+	Axiomas:
+		obs?(nil)	= 	true
+		otra(t, n)	= 	n
+		...
+Fin TAD
+
+// gens:
+- crear 
+- nuevoAlumno
+- avanzarNivel
+// obs:
+- maestros(ccc)
+- desertores(ccc)
+- alumnos(ccc)
+- nivel(alumno, ccc)
+- descendientesAcademicos(alumno, ccc)
+// extras:
+- #maestros 
+- tutor(alumno, ccc) 
+10 niveles, 
+
+arranca con conj de maestros (nivel(maestros)=10)
+ingresantes: 
+	- arrancan nivel 1 
+	- son asignados a un tutor (tutores pueden estar en cualquier nivel, salvo el 1)
+	- al superar el nivel de su tutor son asignados a uno nuevo de mayor nivel
+		- esto ultimo vale para todos los niveles salvo si pasan al 10, donde entra al conj de maestros
+desertores:
+	- al desertar, los alumnos de un tutor pasan a los de su propio tutor
