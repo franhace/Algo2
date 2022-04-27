@@ -1,0 +1,42 @@
+TAD RedAntisocial
+	Igualdad Observacional:	
+	(∀r1,r2:RedAntisocial)(r1 =obs r2 ↔
+		(miembros(r1)=miembros(r2) ∧ expulsados(r1)=expulsados(r2) ∧L
+			∀p:persona)(p ∈ miembros(r1) ∧ miembros(r2) ⇒L 
+				convocados(p,r1) = convocados(p,r2) ∧
+				seguidores(p,r1) = seguidores(p,r2)))) ;
+	Géneros: RedAntisocial
+	Exporta: RedAntisocial, observadores, generadores, 
+	Usa: Bool, Nat
+	
+	Observadores Básicos:
+		lider: ra -> persona 
+		expulsados: ra -> conj(persona)
+		convocados: persona p x ra -> conj(persona) {p ∈ miembros(ra)}
+		seguidores: persona p x ra -> conj(persona) {p ∈ miembros(ra)}
+	Generadores:
+		arrancar: persona p-> ra
+		convocar: persona p x conj(persona) x ra -> ra {p ∈ miembros(ra)}
+		enjuiciar: persona p x ra -> ra {p ∈ miembros(ra)}
+		absolver: persona p x ra -> ra {p ∈ expulsados(ra)}
+	Otras Operaciones:
+		miembros: ra -> conj(persona)
+		#seguidores: persona p x ra -> conj(persona) {p ∈ miembros(ra)}
+		fueExpulsado?: persona p x conj(p) -> bool
+	Axiomas:
+		lider(arrancar(p)) ≡ p
+		lider(convocar(p, ps, ra)) ≡ lider(ra)
+		lider(enjuiciar(p, ra)) ≡ lider(ra)
+		lider(absolver(p, ra)) ≡ lider(ra)
+		
+		expulsados(arrancar(p)) ≡ Ø
+		expulsados(convocar(p, ps, ra)) ≡ expulsados(ra)
+		expulsados(enjuiciar(p, ra)) ≡ lider(ra)
+		expulsados(absolver(p, ra)) ≡ lider(ra)
+		
+		lider(arrancar(p)) ≡ p
+		lider(convocar(p, ps, ra)) ≡ lider(ra)
+		lider(enjuiciar(p, ra)) ≡ lider(ra)
+		lider(absolver(p, ra)) ≡ lider(ra)
+		...
+Fin TAD
