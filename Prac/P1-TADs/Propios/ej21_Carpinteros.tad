@@ -37,12 +37,61 @@ TAD CCC
 		maestros(crearEscuela(cm)) ≡ cm
 		maestros(nuevoAlumno(m,ccc)) ≡ maestros(ccc)
 		maestros(avanzarNivel(m,ccc)) ≡ maestros(ccc) •
-			if nivel(m,ccc) == 9 then
+			if nivel(m,ccc) == 10 then
 				m
 			else
 				Ø
 			fi
 		maestros(desertar(m,ccc)) ≡ maestros(ccc) - {m}
+		
+		desertores(crearEscuela(cm)) ≡ Ø
+		desertores(nuevoAlumno(m,ccc)) ≡ desertores(ccc)
+		desertores(avanzarNivel(m,ccc)) ≡ desertores(ccc) 
+		desertores(desertar(m,ccc)) ≡ Ag(m,desertores(ccc))
+		
+		alumnos(crearEscuela(cm)) ≡ Ø
+		alumnos(nuevoAlumno(m,ccc)) ≡ Ag(m,alumnos(ccc))
+		alumnos(avanzarNivel(m,ccc)) ≡ alumnos(ccc) -
+		 	if nivel(m,ccc)=10 then
+		 		{m}
+		 	else
+		 		{Ø}
+		 	fi
+		alumnos(desertar(m,ccc)) ≡ alumnos(ccc) - {m}
+		
+		nivel(a, nuevoAlumno(m,ccc)) ≡ 
+			if a=m then
+				1
+			else
+				nivel(a,ccc)
+		nivel(a, avanzarNivel(m,ccc)) ≡ nivel(a,ccc) + β(a=m)
+		nivel(a, desertar(m,ccc)) ≡ nivel(a, ccc)
+		
+		tutor(a, nuevoAlumno(m,ccc)) ≡ if a=m then dameTutor(1,e) else tutor(a,ccc) fi
+		tutor(a, avanzarNivel(m,ccc)) ≡ if a=m ∧L nivel(a,ccc)=10 then Ø else tutor(a,ccc) fi 
+		tutor(a, desertar(m,ccc)) ≡ 
+		if a=m then tutor(a,ccc) 
+		else (
+			if a ∈ descendientesAcademicos(m,ccc) then dameTutor(a,ccc) 
+			else tutor(a,ccc) fi) 
+		fi
+		
+		dameTutor: nat n x ccc -> miembro 
+		dameTutor(n,ccc) ≡ dameTutorAux(n, miembros(ccc), ccc)
+		dameTutorAux(n,cm,ccc) ≡ if nivel(dameUno(cs)) > n then dameUno(cs) else dameTutorAux(n,sinUno(cm),ccc) fi
+		
+		descendientesAcademicos: miembro m x ccc -> conj(miembro) {m ∈ miembros(ccc)}
+		descendientesAcademicos(m,ccc) ≡ descendientesAcademicosAux(m, alumnos(ccc), ccc)
+		descendientesAcademicosAux(m,ca,ccc) ≡ 
+			if Ø?(ca) then
+				Ø
+			else
+				if dameUno(ca) = m then
+					Ag(dameUno(ca), descendientesAcademicosAux(m,sinUno(ca),ccc)) ∪ descendientesAcademicos(dameUno(cs),ccc)
+				else
+					descendientesAcademicosAux(m,sinUno(ca),ccc))
+				fi
+			fi
 		
 		
 		...
