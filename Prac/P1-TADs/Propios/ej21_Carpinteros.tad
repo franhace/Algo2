@@ -1,13 +1,16 @@
 TAD CCC
 	Igualdad Observacional:
 		(∀c1,c2:CCC)(c1 =obs c2 ↔
-		(maestros(c1) =obs maestros(c2) ∧
-		desertores(c1) =obs desertores(c2) ∧
-		alumnos(c1) =obs alumnos(c2)
-		(∀a:alumno)(
-			a ∈ () ∧L
-			descendientesAcademicos(a,c1) =obs descendientesAcademicos(a,c2) ∧L
-			nivel(a,c1) = nivel(a,c2)
+		(
+			maestros(c1) =obs maestros(c2) ∧
+			desertores(c1) =obs desertores(c2) ∧
+			alumnos(c1) =obs alumnos(c2) ∧
+			(∀a:alumno)(
+				a ∈ alumnos(c1) ⇒L
+				(tutor(a,c1) =obs tutor(a,c2) ∧
+				descendientesAcademicos(a,c1) =obs descendientesAcademicos(a,c2) ∧L
+				nivel(a,c1) = nivel(a,c2)
+				)
 			)
 		)
 	);
@@ -16,30 +19,36 @@ TAD CCC
 	Usa: Bool, Nat
 	
 	Observadores Básicos:
-		obs?:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+		maestros: ccc -> conj(miembro)
+		desertores: ccc -> conj(miembro)
+		alumnos: ccc -> conj(miembro)
+		nivel: miembro m x ccc -> nat n {m ∈ alumnos(ccc) ∧ n ≥ 1}
+		tutor: miembro m x ccc -> miembro {m ∈ alumnos(ccc)}
 	Generadores:
-		nil:			-> nombreTad
+		crearEscuela: conj(miembro) -> ccc 
+		nuevoAlumno: miembro m x ccc -> ccc {¬(m ∈ miembros(ccc) ∨ m ∈ desertores(ccc))}
+		avanzarNivel: miembro m x ccc -> ccc {m ∈ alumnos(ccc) ∧L nivel(m,ccc) ≤ 9}
+		desertar: miembro m x ccc -> ccc {m ∈ alumnos(ccc) ∨ m ∈ maestros(ccc) ⇒ #maestros(ccc)>1}
 	Otras Operaciones:
-		otra:	nombreTad t × nat n	-> bool 	{ n ≥ 1 }
+		miembros: ccc -> conj(miembro) // {maestros ∪ alumnos} 
+		descendientesAcademicos: miembro m x ccc -> conj(miembro) {m ∈ alumnos(ccc)}
+		#maestros: miembro m x ccc -> ℕ
 	Axiomas:
-		obs?(nil)	= 	true
-		otra(t, n)	= 	n
+		maestros(crearEscuela(cm)) ≡ cm
+		maestros(nuevoAlumno(m,ccc)) ≡ maestros(ccc)
+		maestros(avanzarNivel(m,ccc)) ≡ maestros(ccc) •
+			if nivel(m,ccc) == 9 then
+				m
+			else
+				Ø
+			fi
+		maestros(desertar(m,ccc)) ≡ maestros(ccc) - {m}
+		
+		
 		...
 Fin TAD
 
-// gens:
-- crear 
-- nuevoAlumno
-- avanzarNivel
-// obs:
-- maestros(ccc)
-- desertores(ccc)
-- alumnos(ccc)
-- nivel(alumno, ccc)
-- descendientesAcademicos(alumno, ccc)
-// extras:
-- #maestros 
-- tutor(alumno, ccc) 
+
 10 niveles, 
 
 arranca con conj de maestros (nivel(maestros)=10)
