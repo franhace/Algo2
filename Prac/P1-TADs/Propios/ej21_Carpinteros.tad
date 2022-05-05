@@ -86,7 +86,7 @@ TAD CCC
 			if Ø?(ca) then
 				Ø
 			else
-				if dameUno(ca) = m then
+				if tutor(dameUno(ca)) = m then
 					Ag(dameUno(ca), descendientesAcademicosAux(m,sinUno(ca),ccc)) ∪ descendientesAcademicos(dameUno(cs),ccc)
 				else
 					descendientesAcademicosAux(m,sinUno(ca),ccc))
