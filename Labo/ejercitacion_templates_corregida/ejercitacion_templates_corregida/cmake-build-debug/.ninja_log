@@ -1,0 +1,23 @@
+# ninja log v5
+0	1147	1651845742191514727	tests/google-test/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o	a9f53cbb30cc89da
+0	1217	1651845742263513334	CMakeFiles/ej1.dir/tests/test_templates.cpp.o	b5bb6b0e2260e818
+1	3652	1651845744691466357	tests/google-test/CMakeFiles/gtest.dir/src/gtest-all.cc.o	6d633fa8816dd37c
+3652	3706	1651845744743465351	tests/google-test/libgtest.a	de6564c71245d1fd
+3706	3714	1651845744763464964	tests/google-test/libgtest_main.a	5d2b14aa9c0d6a87
+3715	3862	1651845744907462177	ej1	d9c49648c0b2f563
+1	823	1651845880908869040	CMakeFiles/ej2.dir/tests/test_templates.cpp.o	604b2366c6bb483f
+823	970	1651845881056866255	ej2	8bc62d1c9baa13ae
+0	893	1651846238742310693	CMakeFiles/ej3.dir/tests/test_templates.cpp.o	183e82946ac3cfe3
+893	1042	1651846238890308037	ej3	1ab38d536d23d3ef
+1	907	1651846416435146243	CMakeFiles/ej4.dir/tests/test_templates.cpp.o	a45e2beea2c8fd66
+908	1059	1651846416583143625	ej4	88bf5136c23b7a70
+1	900	1651846555160702757	CMakeFiles/ej5.dir/tests/test_templates.cpp.o	deeb4146424c1862
+1	794	1651846802500387015	CMakeFiles/ej5.dir/tests/test_diccionario.cpp.o	68dd8d661cb58ad0
+794	949	1651846802656384305	ej5	e73c161fdbc4a071
+1	909	1651847117274943125	CMakeFiles/ej6.dir/tests/test_diccionario.cpp.o	320c1dd2b4ea6868
+1	916	1651847117282942987	CMakeFiles/ej6.dir/tests/test_templates.cpp.o	bae6865448dce624
+916	1077	1651847117442940229	ej6	24b842089b866e9d
+1	926	1651847847801695546	CMakeFiles/ej7.dir/tests/test_templates.cpp.o	39142493c883c8fa
+2	929	1651847847805695470	CMakeFiles/ej7.dir/tests/test_multiconjunto.cpp.o	99c36a79366860e2
+2	930	1651847847805695470	CMakeFiles/ej7.dir/tests/test_diccionario.cpp.o	266a00633ec84704
+930	1098	1651847847973692337	ej7	c3a79fc16aba4d7e
