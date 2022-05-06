@@ -1,5 +1,6 @@
 #include "vector"
 #include "string"
+using namespace std;
 
 template<class Clave, class Valor>
 class Diccionario {
@@ -8,6 +9,7 @@ public:
     void definir(Clave k, Valor v);
     bool def(Clave k) const;
     Valor obtener(Clave k) const;
+    vector<Clave> claves();
 private:
 
     struct Asociacion {
@@ -56,3 +58,32 @@ Valor Diccionario<Clave,Valor>::obtener(Clave k) const {
 	}
 	assert(false);
 }
+
+template<class Clave>
+Clave minimo(vector<Clave>& v1){
+    Clave min = v1[0];
+    int a = 0;
+    for (int i = 0; i < v1.size(); ++i) {
+        if (v1[i] < min) {
+            min = v1[i];
+            a = i;
+        }
+    }
+    v1.erase (v1.begin() + a);
+    return min;
+}
+
+template<class Clave, class Valor>
+vector<Clave> Diccionario<Clave, Valor>::claves() {
+    vector<Clave> v1;
+    vector<Clave> v2;
+    for (int i = 0; i < _asociaciones.size(); ++i) {
+        v1.push_back(_asociaciones[i].clave);
+    }
+    while (v1.size() != 0){
+        v2.push_back(minimo(v1));
+    }
+    return v2;
+}
+
+
