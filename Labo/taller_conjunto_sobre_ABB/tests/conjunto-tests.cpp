@@ -14,6 +14,7 @@ TEST(conjunto_test, conjunto_vacio) {
 TEST(conjunto_test, test_insertar_un_valor) {
     Conjunto<int> c;
     c.insertar(5);
+//    cout << c << endl;
     EXPECT_EQ(c.cardinal(), 1);
 }
 
@@ -41,7 +42,7 @@ TEST(conjunto_test, test_pertenece) {
     EXPECT_EQ(c.pertenece(i), i == 3);
   }
 
-  // Agrego el 3
+  // Agrego el 5
   c.insertar(5);
   for (int i = 0; i < 4; i++) {
     EXPECT_EQ(c.pertenece(i), i == 3);

@@ -1,6 +1,5 @@
-
 template <class T>
-Conjunto<T>::Conjunto() {
+Conjunto<T>::Conjunto(): _raiz() {
     // Completar
 }
 
@@ -11,13 +10,47 @@ Conjunto<T>::~Conjunto() {
 
 template <class T>
 bool Conjunto<T>::pertenece(const T& clave) const {
-    assert(false);
-    return false;
+    Nodo* nodo = _raiz;
+    while (nodo != nullptr && nodo->valor != clave){
+        if (clave > nodo->valor) nodo = nodo->der;
+        else nodo = nodo->izq;
+    }
+    return nodo != nullptr;
 }
 
 template <class T>
 void Conjunto<T>::insertar(const T& clave) {
-    assert(false);
+    if (pertenece(clave)){
+        // Elemento ya existe
+        return;
+    }
+
+    Nodo* nuevo = new Nodo(clave);
+    Nodo* anterior = NULL;
+    Nodo* nodo = _raiz;
+    //From Cormen's book
+    while (nodo != NULL){
+        anterior = nodo;
+        if (nuevo->valor < nodo->valor){
+            nodo = nodo->izq;
+        } else {
+            nodo = nodo->der;
+        }
+    }
+    nuevo->parent = anterior;
+    if (anterior == NULL){
+        // Arbol vacio
+        _raiz = nuevo;
+    } else if (nuevo->valor < anterior->valor){
+        anterior->izq = nuevo;
+    } else {
+        anterior->der = nuevo;
+    }
+
+    _cardinal += 1;
+
+    return;
+
 }
 
 template <class T>
@@ -32,22 +65,37 @@ const T& Conjunto<T>::siguiente(const T& clave) {
 
 template <class T>
 const T& Conjunto<T>::minimo() const {
-    assert(false);
+    Nodo* nodo = _raiz;
+    while (nodo != nullptr){
+        nodo = nodo->izq;
+    }
+    return nodo->valor;
 }
 
 template <class T>
 const T& Conjunto<T>::maximo() const {
-    assert(false);
+    Nodo* nodo = _raiz;
+    while (nodo != nullptr){
+        nodo = nodo->der;
+    }
+    return nodo->valor;
 }
+
 
 template <class T>
 unsigned int Conjunto<T>::cardinal() const {
-    assert(false);
-    return 0;
+    return _cardinal;
 }
 
 template <class T>
 void Conjunto<T>::mostrar(std::ostream&) const {
-    assert(false);
+    std::cout << "[";
+    Nodo* actual = _raiz;
+    while (actual->next) {
+        std::cout << actual->value << ", ";
+        actual = actual->next;
+    }
+    std::cout << actual->value << "]";
 }
+
 
