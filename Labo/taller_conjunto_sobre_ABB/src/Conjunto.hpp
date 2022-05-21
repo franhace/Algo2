@@ -20,36 +20,31 @@ bool Conjunto<T>::pertenece(const T& clave) const {
 
 template <class T>
 void Conjunto<T>::insertar(const T& clave) {
-    if (pertenece(clave)){
-        // Elemento ya existe
-        return;
-    }
+    if (pertenece(clave)== false){
+        Nodo* nuevo = new Nodo(clave);
+        Nodo* anterior = NULL;
+        Nodo* nodo = _raiz;
 
-    Nodo* nuevo = new Nodo(clave);
-    Nodo* anterior = NULL;
-    Nodo* nodo = _raiz;
-    //From Cormen's book
-    while (nodo != NULL){
-        anterior = nodo;
-        if (nuevo->valor < nodo->valor){
-            nodo = nodo->izq;
-        } else {
-            nodo = nodo->der;
+        while (nodo != NULL){
+            anterior = nodo;
+            if (nuevo->valor < nodo->valor){
+                nodo = nodo->izq;
+            } else {
+                nodo = nodo->der;
+            }
         }
-    }
-    nuevo->parent = anterior;
-    if (anterior == NULL){
-        // Arbol vacio
-        _raiz = nuevo;
-    } else if (nuevo->valor < anterior->valor){
-        anterior->izq = nuevo;
-    } else {
-        anterior->der = nuevo;
-    }
+        nuevo->parent = anterior;
+        if (anterior == NULL){
+            // ABB vacio
+            _raiz = nuevo;
+        } else if (nuevo->valor < anterior->valor){
+            anterior->izq = nuevo;
+        } else {
+            anterior->der = nuevo;
+        }
 
-    _cardinal += 1;
-
-    return;
+        _cardinal += 1;
+    }
 
 }
 

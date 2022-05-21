@@ -56,6 +56,7 @@ class Conjunto
             Nodo(const T& v) : valor(v),parent(NULL), izq(NULL), der(NULL) {};
             // El elemento al que representa el nodo.
             T valor;
+            // Puntero al padre.
             Nodo* parent;
             // Puntero a la raíz del subárbol izquierdo.
             Nodo* izq;
