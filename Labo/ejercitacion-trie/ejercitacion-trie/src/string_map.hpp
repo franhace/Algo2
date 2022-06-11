@@ -42,7 +42,6 @@ set<string> string_map<T>::keys(Nodo* actual, string key) {
 
     for(Nodo* sig : actual->siguientes){
         if(sig != nullptr){
-            // Inserto todos los siguients a este nodo
             c = char(i);
             for(string key : keys(sig, key + c)){
                 out.insert(key);
@@ -62,10 +61,9 @@ string_map<T>::~string_map(){
 
 template<typename T>
 string_map<T>::Nodo::~Nodo() {
-    // COMPLETAR
     delete(definicion);
     definicion = nullptr;
-    // Intento setear cada elemento del nodo a nullptr, pero no funciona
+
     for(int i=0; i<siguientes.size(); i++){
         if(siguientes[i] != nullptr){
             siguientes[i] = nullptr;
@@ -155,7 +153,6 @@ void string_map<T>::borrar_sigs(Nodo* actual) {
     // COMPLETAR
     for(Nodo* sig : actual->siguientes){
         if(sig != nullptr){
-            // Borro todos los siguients a este nuevo nodo
             borrar_sigs(sig);
             delete(sig);
         }
@@ -208,7 +205,7 @@ void string_map<T>::erase(const string& key) {
             delete(actual);
         }
         else{
-            delete(actual->definicion);// = nullptr;
+            delete(actual->definicion);
             actual->definicion = nullptr;
         }
     }

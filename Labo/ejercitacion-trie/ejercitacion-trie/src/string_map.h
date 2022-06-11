@@ -87,15 +87,16 @@ private:
         vector<Nodo*> siguientes;
         T* definicion;
 
+        ~Nodo();
+
         Nodo() : siguientes(256, nullptr), definicion(nullptr) {};
-        Nodo(T* def) : siguientes(256, nullptr) {
+        explicit Nodo(T* def) : siguientes(256, nullptr) {
             definicion = new T(def);
         }
-        ~Nodo();
     };
     set<string> keys(Nodo*, string key);
     /** Dada una clave borra todas las siguientes del arbol **/
-    void borrar_sigs(Nodo* nodo_actual);
+    void borrar_sigs(Nodo* actual);
 
     Nodo* _raiz;
     int _size;

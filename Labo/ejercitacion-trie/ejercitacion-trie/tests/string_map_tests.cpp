@@ -9,14 +9,13 @@ TEST(string_map_test, vacio) {
     EXPECT_EQ(vacio.count("hola"), 0);
 }
 
-//TEST(string_map_test, asignar) {
-//    string_map<int> singleton;
-//    singleton["m"]=2;
-//
-//
-//    EXPECT_EQ(singleton.at("hola"), 1);
-//    EXPECT_EQ(singleton.size(), 1);
-//}
+TEST(string_map_test, asignar) {
+    string_map<int> singleton;
+    singleton.insert(make_pair("hola", 1));
+
+    EXPECT_EQ(singleton.at("hola"), 1);
+    EXPECT_EQ(singleton.size(), 1);
+}
 
 TEST(string_map_test, obtener) {
     string_map<int> sin_prefijos;
@@ -219,28 +218,28 @@ TEST(string_map_test, erase) {
     EXPECT_FALSE(sin_prefijos.count("adios") == 1);
 }
 
-#ifdef EXT
+TEST(string_map_test, operator_corchetes) {
+    string_map<int> sin_prefijos;
+    string_map<int> con_prefijos;
 
-//TEST(string_map_test, operator_corchetes) {
-//    string_map<int> sin_prefijos;
-//    string_map<int> con_prefijos;
-//
-//    sin_prefijos["hola"] = 1;
-//    sin_prefijos["chau"] = 2;
-//    sin_prefijos["adios"] =  3;
-//
-//    con_prefijos["c"] =  1;
-//    con_prefijos["casa"] =  2;
-//    con_prefijos["casona"] =  3;
-//
-//    EXPECT_EQ(sin_prefijos["hola"], 1);
-//    EXPECT_EQ(sin_prefijos["chau"], 2);
-//    EXPECT_EQ(sin_prefijos["adios"], 3);
-//
-//    EXPECT_EQ(con_prefijos["c"], 1);
-//    EXPECT_EQ(con_prefijos["casa"], 2);
-//    EXPECT_EQ(con_prefijos["casona"], 3);
-//}
+    sin_prefijos["hola"] = 1;
+    sin_prefijos["chau"] = 2;
+    sin_prefijos["adios"] =  3;
+
+    con_prefijos["c"] =  1;
+    con_prefijos["casa"] =  2;
+    con_prefijos["casona"] =  3;
+
+    EXPECT_EQ(sin_prefijos["hola"], 1);
+    EXPECT_EQ(sin_prefijos["chau"], 2);
+    EXPECT_EQ(sin_prefijos["adios"], 3);
+
+    EXPECT_EQ(con_prefijos["c"], 1);
+    EXPECT_EQ(con_prefijos["casa"], 2);
+    EXPECT_EQ(con_prefijos["casona"], 3);
+}
+
+#ifdef EXT
 
 #endif
 
