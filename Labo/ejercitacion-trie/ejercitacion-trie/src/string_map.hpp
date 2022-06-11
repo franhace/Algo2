@@ -63,8 +63,8 @@ template<typename T>
 string_map<T>::Nodo::~Nodo() {
     delete(definicion);
     definicion = nullptr;
-
-    for(int i=0; i<siguientes.size(); i++){
+    int tam = siguientes.size();
+    for(int i=0; i<tam; i++){
         if(siguientes[i] != nullptr){
             siguientes[i] = nullptr;
         }

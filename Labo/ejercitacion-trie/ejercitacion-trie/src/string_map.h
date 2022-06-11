@@ -89,8 +89,8 @@ private:
 
         ~Nodo();
 
-        Nodo() : siguientes(256, nullptr), definicion(nullptr) {};
-        explicit Nodo(T* def) : siguientes(256, nullptr) {
+        Nodo() : siguientes(120, nullptr), definicion(nullptr) {};
+        explicit Nodo(T* def) : siguientes(120, nullptr) {
             definicion = new T(def);
         }
     };
