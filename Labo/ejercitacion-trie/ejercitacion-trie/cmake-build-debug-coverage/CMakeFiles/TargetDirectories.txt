@@ -1,0 +1,7 @@
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/edit_cache.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/correrValgrind.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/rebuild_cache.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/gtest.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/correrTests.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/gtest_main.dir
+/home/ff/Facu/Algo22/Labo/ejercitacion-trie/ejercitacion-trie/cmake-build-debug-coverage/CMakeFiles/correrTests_ext.dir
