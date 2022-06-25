@@ -1,0 +1,6 @@
+/home/ff/Facu/Algo22/Labo/tp2_2022_c1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ff/Facu/Algo22/Labo/tp2_2022_c1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ff/Facu/Algo22/Labo/tp2_2022_c1/cmake-build-debug/CMakeFiles/gtest.dir
+/home/ff/Facu/Algo22/Labo/tp2_2022_c1/cmake-build-debug/CMakeFiles/correrTests.dir
+/home/ff/Facu/Algo22/Labo/tp2_2022_c1/cmake-build-debug/CMakeFiles/gtest_main.dir
+/home/ff/Facu/Algo22/Labo/tp2_2022_c1/cmake-build-debug/CMakeFiles/correrValgrind.dir

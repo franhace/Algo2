@@ -42,13 +42,13 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : " -pthread -std=gnu++11 -ggdb3 -g -g"
+					"fragment" : "--coverage -pthread -std=gnu++11 -ggdb3 -g -g"
 				}
 			],
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				3
+				2
 			]
 		}
 	],
@@ -69,7 +69,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-pthread -std=gnu++11 -ggdb3 -g -g",
+				"fragment" : "--coverage -pthread -std=gnu++11 -ggdb3 -g -g",
 				"role" : "flags"
 			},
 			{
@@ -103,15 +103,14 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1,
-				2
+				1
 			]
 		},
 		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				3
+				2
 			]
 		}
 	],
@@ -125,11 +124,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "src/string_map.hpp",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "src/string_map3.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
