@@ -1,4 +1,4 @@
-# Materia de la materia Algoritmos y estructura de datos 2
+# Material de Algoritmos y estructura de datos 2, FCEN, UBA
 ## 1. Tipos abstractos de datos y problemas
 
     Tipos abstractos de datos: secuencia; pila; cola; arreglo; árbol binario; conjunto; diccionario.
